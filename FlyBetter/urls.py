@@ -21,6 +21,7 @@ from Boards import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('HomePage/', views.Home, name='home'),
-    path('',views.SignUp,name='SignUp')
+    path('SignUp/',views.SignUp,name='SignUp'),
+    path('',views.LogIN,name='LogIn')
     
 ]
