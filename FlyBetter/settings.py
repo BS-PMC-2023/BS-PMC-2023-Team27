@@ -79,7 +79,7 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'FlyBetter_DB',
+        'NAME': 'flybetter_db',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
