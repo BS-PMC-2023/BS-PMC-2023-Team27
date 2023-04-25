@@ -30,11 +30,16 @@ def SignUp(request):
 
 def LogIN(request):
     if request == 'POST':
+        print("kjhdfjs")
         username = request.POST['username']
         password1 = request.POST['pass']
         user = USER.objects.get(username)
+        print(password1)
+        print(user.password)
         if user.password == password1:
             return redirect('home')
         else:
-            messages.error(request, 'Invalid username or password') 
+            messages.error(request, 'Invalid username or password')
+
+    print("aaaaaaaa")
     return render(request,'LogIn.html')
