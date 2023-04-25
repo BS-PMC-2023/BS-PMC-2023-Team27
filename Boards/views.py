@@ -3,7 +3,7 @@ from django.shortcuts import render,HttpResponse,redirect
 
 from . import forms
 from .models import USER
-from django.contrib import messages
+from django.contrib import messages, auth
 from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect
 # Create your views here.
@@ -35,7 +35,6 @@ def SignUp(request):
 
 def LogIN(request):
     if request == 'POST':
-        print("kjhdfjs")
         username = request.POST['username']
         password1 = request.POST['pass']
         user = USER.objects.get(username)
@@ -45,9 +44,8 @@ def LogIN(request):
             return redirect('home')
         else:
             messages.error(request, 'Invalid username or password')
-
-    print("aaaaaaaa")
-    return render(request,'LogIn.html')
+    else:
+       return render(request,'LogIn.html')
 
 
 def worker_signup(request):
