@@ -38,8 +38,6 @@ def LogIN(request):
         username = request.POST['username']
         password1 = request.POST['pass']
         user = USER.objects.get(username)
-        print(password1)
-        print(user.password)
         if user.password == password1:
             return redirect('home')
         else:
