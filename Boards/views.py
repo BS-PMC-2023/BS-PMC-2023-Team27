@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.shortcuts import render,HttpResponse,redirect
 
 from . import forms
@@ -69,3 +70,7 @@ def worker_signup(request):
             my_customer_group[0].user_set.add(user)
         return HttpResponseRedirect('LogIn')
     return render(request, 'workersignup.html', context=mydict)
+
+
+def logOut(request):
+    logout(request)
