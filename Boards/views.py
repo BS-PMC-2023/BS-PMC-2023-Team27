@@ -34,16 +34,23 @@ def SignUp(request):
     return render(request,'SignUp.html')
 
 def LogIN(request):
-    if request == 'POST':
+    if request.method == 'POST':
         username = request.POST['username']
-        password1 = request.POST['pass']
-        user = USER.objects.get(username)
-        if user.password == password1:
-            return redirect('home')
+        password = request.POST['password']
+        print(username)
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:
+            print("asdasd")
+            if user.is_staff:
+                auth.login(request, user)
+                print(user)
+                return redirect('home')
+
         else:
             messages.error(request, 'Invalid username or password')
     else:
-       return render(request,'LogIn.html')
+        return render(request, 'LogIn.html')
 
 
 def worker_signup(request):
