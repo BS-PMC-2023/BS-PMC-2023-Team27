@@ -9,8 +9,12 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 def Home(request):
-  
+
     return render(request,'index.html')
+
+def about(request):
+  
+    return render(request,'aboutus.html')
 
 def SignUp(request):
 
@@ -37,14 +41,13 @@ def LogIN(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        print(username)
+
         user = auth.authenticate(username=username, password=password)
+        print(user)
 
         if user is not None:
-            print("asdasd")
             if user.is_staff:
                 auth.login(request, user)
-                print(user)
                 return redirect('home')
 
         else:
