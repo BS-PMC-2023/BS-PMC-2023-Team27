@@ -134,7 +134,7 @@ button{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form method="post">
+    <form action="" method="POST">
         <h3>Login Here</h3>
         {% csrf_token %} 
         <label for="username">Username</label>
@@ -145,7 +145,7 @@ button{
 
         <button type="submit">Log In</button>
         
-        <a href="{% url 'SignUp' %}" >Create a account</a>
+        <a href="{% url 'SignUpPage' %}" >Create a account</a>
     </form>
 </body>
 </html>
