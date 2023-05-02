@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee49dbe4-c865-4510-9c5c-b72bad3fa859" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JenkinsFile" beforeDir="false" afterPath="$PROJECT_DIR$/JenkinsFile" afterDir="false" />
-    </list>
+    <list default="true" id="ee49dbe4-c865-4510-9c5c-b72bad3fa859" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -160,7 +157,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1682953800040</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL‎-00010" summary="changes jenkins file">
+      <created>1683027459643</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL‎-00010" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1683027459643</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +193,7 @@
     <MESSAGE value="BSPMC2327-13 edit view to check  worker backend" />
     <MESSAGE value="changes" />
     <MESSAGE value="conect jenkins" />
-    <option name="LAST_COMMIT_MESSAGE" value="conect jenkins" />
+    <MESSAGE value="changes jenkins file" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes jenkins file" />
   </component>
 </project>
