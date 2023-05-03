@@ -1,8 +1,8 @@
 from django.contrib.auth import logout
 from django.shortcuts import render,redirect
 
-from . import forms
-from .models import Passenger
+
+
 from django.contrib import messages, auth
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
