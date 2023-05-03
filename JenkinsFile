@@ -14,6 +14,18 @@ pipeline {
 					}
 			}
         }
+         stage(' Unit Tests') {
+            agent {
+                docker {
+                    image 'python:3.8'
+                }
+            }
+            steps {
+		            withEnv(["HOME=${env.WORKSPACE}"]) {
+                sh 'python manage.py test --tag=unit-test'
+		      }
+			}
+        }
 
 	}
 }
