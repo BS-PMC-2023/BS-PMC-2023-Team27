@@ -39,7 +39,7 @@ def SignUp(request):
             print("aaa")
             messages.error(request, 'Password do not match')
             return redirect('SignUp')
-
+        
 
     return render(request, 'SignUp.html', context=mydict)
 
