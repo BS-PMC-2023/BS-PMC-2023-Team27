@@ -55,7 +55,7 @@
     </head>
     <body>
         <center><h1>Register From</h1></center>
-        <form action="#" method="post">
+        <form action="worker_signup" method="post">
             {% csrf_token %}
             {% load static %}
             <center><div class="container">
@@ -75,7 +75,7 @@
             	<label for='password'><b>Password : </b></label>
             	<input type="text" placeholder="Enter Password" name="password" required><br>  
             	<button type="submit"><b>Signup</b></button><br>     
-            	Already an accounct <a href="/homePage"> Login </a>
+            	Back to Home <a href="/HomePageadmin"> Admin Page</a>
             </div></center>
         </form>
     </body>
