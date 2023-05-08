@@ -1,31 +1,35 @@
+from email.headerregistry import Group
 from django.contrib.auth import logout
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 
-
+from Boards import forms
 
 from django.contrib import messages, auth
-from django.contrib.auth.models import Group
+# from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 
 # Create your views here.
 
+
 def Home(request):
-    return render(request,'index.html')
+    return render(request, 'index.html')
+
 
 def about(request):
 
-    return render(request,'aboutus.html')
+    return render(request, 'aboutus.html')
+
 
 def SignUp(request):
     passngeruserform = forms.PassengerUserForm()
-    PassengerForm=forms.PassengerForm()
-    mydict = {'PassengerForm': PassengerForm,'passngeruserform':passngeruserform}
+    PassengerForm = forms.PassengerForm()
+    mydict = {'PassengerForm': PassengerForm,
+              'passngeruserform': passngeruserform}
 
     if request.method == 'POST':
         userPForm = forms.PassengerUserForm(request.POST)
         PassngerForm = forms.PassengerForm(request.POST, request.FILES)
-        if userPForm.is_valid() and PassngerForm.is_valid() :
-            print("bbbb")
+        if userPForm.is_valid() and PassngerForm.is_valid():
             user = userPForm.save()
             user.set_password(user.password)
             user.save()
@@ -36,12 +40,11 @@ def SignUp(request):
             my_customer_group[0].user_set.add(user)
             return redirect('home')
         else:
-            print("aaa")
             messages.error(request, 'Password do not match')
             return redirect('SignUp')
-        
 
     return render(request, 'SignUp.html', context=mydict)
+
 
 '''def LogIN(request):
     if request.method == 'POST':
@@ -57,6 +60,7 @@ def SignUp(request):
     else:
         messages.error(request, 'Invalid username or password')
         return render(request, 'LogIn.html')'''
+
 
 def LogIN(request):
     print(request.user.is_authenticated)
@@ -82,9 +86,7 @@ def LogIN(request):
             return redirect('homePageWorker')
         elif request.user.groups.filter(name='PASSENGER'):
             return redirect('homePage')
-    return render(request,'LogIn.html')
-
-
+    return render(request, 'LogIn.html')
 
 
 def worker_signup(request):
@@ -110,11 +112,14 @@ def worker_signup(request):
 def logOut(request):
     logout(request)
 
+
 def HomePageadmin(request):
-    return render(request,'HomePageadmin.html')
+    return render(request, 'HomePageadmin.html')
+
 
 def homePageWorker(request):
-    return render(request,'homePageWorker.html')
+    return render(request, 'homePageWorker.html')
+
 
 def SignUpPage(request):
-    return render(request,'SignUp.html')
+    return render(request, 'SignUp.html')
