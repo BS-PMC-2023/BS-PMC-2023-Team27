@@ -123,3 +123,7 @@ def homePageWorker(request):
 
 def SignUpPage(request):
     return render(request, 'SignUp.html')
+
+
+def paypal(request):
+    return render(request, "paypal.html")
