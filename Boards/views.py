@@ -1,6 +1,7 @@
 from email.headerregistry import Group
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
+import requests
 
 from Boards import forms
 
@@ -12,7 +13,8 @@ from django.contrib.auth.models import User
 
 
 def Home(request):
-    return render(request, 'index.html')
+    response = request.get('https://data.gov.il/he/api/3/action/datastore_search?resource_id=e83f763b-b7d7-479e-b172-ae981ddc6de5&limit=5&q=title:jones').json()
+    return render(request, 'index.html',{'response':response})
 
 
 def about(request):
