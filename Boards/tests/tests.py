@@ -11,32 +11,40 @@ from Boards.models import Worker, Passenger, User
 from Boards.forms import WorkerUserForm, WorkerForm
 
 
+@tag("unit_test")
 class TestUrls(SimpleTestCase):
 
+    @tag('unit-test')
     def test_homepageadmin_url_resolves(self):
         url = reverse('HomePageadmin')
         self.assertEquals(resolve(url).func, HomePageadmin)
 
+    @tag('unit-test')
     def test_homePageWorker_url_resolves(self):
         url = reverse('homePageWorker')
         self.assertEquals(resolve(url).func, homePageWorker)
 
+    @tag('unit-test')
     def test_SignUp_url_resolves(self):
         url = reverse('SignUp')
         self.assertEquals(resolve(url).func, SignUp)
 
+    @tag('unit-test')
     def test_SignUpPage_url_resolves(self):
         url = reverse('SignUpPage')
         self.assertEquals(resolve(url).func, SignUpPage)
 
+    @tag('unit-test')
     def test_LogIN_url_resolves(self):
         url = reverse('home')
         self.assertEquals(resolve(url).func, LogIN)
 
+    @tag('unit-test')
     def test_worker_signup_url_resolves(self):
         url = reverse('worker_signup')
         self.assertEquals(resolve(url).func, worker_signup)
 
+    @tag('unit-test')
     def test_About_url_resolves(self):
         url = reverse('About')
         self.assertEquals(resolve(url).func, about)
@@ -48,12 +56,14 @@ class TestViews(TestCase):
         self.Homeurl = reverse('home')
         self.homwpaurl = reverse('homePage')
 
+    @tag('unit-test')
     def test_homepage_view(self):
         client = Client()
         response = client.get(self.homwpaurl)
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html')
 
+    @tag('unit-test')
     def test_Home_view(self): '''
         client = Client()
         response = client.get(self.Homeurl)
@@ -66,36 +76,42 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'LogIn.html')'''
 
+    @tag('unit-test')
     def test_HomePageadmin_view(self):
         client = Client()
         response = client.get(reverse('HomePageadmin'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'HomePageadmin.html')
 
+    @tag('unit-test')
     def test_homePageWorker_view(self):
         client = Client()
         response = client.get(reverse('homePageWorker'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'homePageWorker.html')
 
+    @tag('unit-test')
     def test_Sign_up_view(self):
         client = Client()
         response = client.get(reverse('SignUp'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'SignUp.html')
 
+    @tag('unit-test')
     def test_SignUpPage_view(self):
         client = Client()
         response = client.get(reverse('SignUpPage'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'SignUp.html')
 
+    @tag('unit-test')
     def test_SignUpPage_view(self):
         client = Client()
         response = client.get(reverse('worker_signup'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'workersignup.html')
 
+    @tag('unit-test')
     def test_About_view(self):
         client = Client()
         response = client.get(reverse('About'))
