@@ -11,7 +11,7 @@ from Boards.models import Worker, Passenger, User
 from Boards.forms import WorkerUserForm, WorkerForm
 
 
-@tag("unit_test")
+@tag('unit-test')
 class TestUrls(SimpleTestCase):
 
     @tag('unit-test')
@@ -50,6 +50,7 @@ class TestUrls(SimpleTestCase):
         self.assertEquals(resolve(url).func, about)
 
 
+@tag('unit-test')
 class TestViews(TestCase):
     def setUp(self):
         self.client = Client()
@@ -119,9 +120,9 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'aboutus.html')
 
 
-@tag("unit_test")
+@tag('unit-test')
 class Test_forms(TestCase):
-
+    @tag('unit-test')
     def test_user_form(self):
 
         form = WorkerUserForm(data={
