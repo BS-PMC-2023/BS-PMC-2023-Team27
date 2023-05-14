@@ -119,6 +119,7 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'aboutus.html')
 
 
+@tag("unit_test")
 class Test_forms(TestCase):
 
     def test_user_form(self):
