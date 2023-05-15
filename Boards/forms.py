@@ -33,3 +33,8 @@ class PassengerForm(forms.ModelForm):
     class Meta:
         model = models.Passenger
         fields = ['id_user_P']
+
+class ContactUsForm(forms.ModelForm):
+    class Meta:
+        model = models.ContactUs
+        fields = ['email', 'subject', 'Discrbition']

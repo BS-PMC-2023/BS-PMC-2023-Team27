@@ -1,11 +1,11 @@
-from email.headerregistry import Group
+#from email.headerregistry import Group
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 
 from Boards import forms
 
 from django.contrib import messages, auth
-# from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -123,3 +123,28 @@ def homePageWorker(request):
 
 def SignUpPage(request):
     return render(request, 'SignUp.html')
+
+def ContactUs(request):
+    # ContactusForm = forms.ContactUsForm()
+    # dect = {'Con': ContactusForm}
+    if request.method == 'POST':
+        # email = request.POST['email']
+        # subject = request.POST['subject']
+        # Discrbition = request.POST['Discrbition']
+
+        CousForm = forms.ContactUsForm(request.POST)
+        print(CousForm)
+        print(CousForm.is_valid())
+
+        if CousForm.is_valid():
+            contact = CousForm.save(commit=False)
+            contact.save()
+            my_customer_group = Group.objects.get_or_create(name='ContactUs')
+
+        return redirect('homePage')
+    else:
+        return render(request, 'ContactUs.html')
+
+
+def Contact(request):
+    return render(request, 'ContactUs.html')
