@@ -32,4 +32,6 @@ urlpatterns = [
     path('About', views.about, name='About'),
     path('paypal', views.paypal, name='paypal'),
 
+
+
 ]

@@ -14,37 +14,30 @@ from Boards.forms import WorkerUserForm, WorkerForm
 @tag('unit-test')
 class TestUrls(SimpleTestCase):
 
-    @tag('unit-test')
     def test_homepageadmin_url_resolves(self):
         url = reverse('HomePageadmin')
         self.assertEquals(resolve(url).func, HomePageadmin)
 
-    @tag('unit-test')
     def test_homePageWorker_url_resolves(self):
         url = reverse('homePageWorker')
         self.assertEquals(resolve(url).func, homePageWorker)
 
-    @tag('unit-test')
     def test_SignUp_url_resolves(self):
         url = reverse('SignUp')
         self.assertEquals(resolve(url).func, SignUp)
 
-    @tag('unit-test')
     def test_SignUpPage_url_resolves(self):
         url = reverse('SignUpPage')
         self.assertEquals(resolve(url).func, SignUpPage)
 
-    @tag('unit-test')
     def test_LogIN_url_resolves(self):
         url = reverse('home')
         self.assertEquals(resolve(url).func, LogIN)
 
-    @tag('unit-test')
     def test_worker_signup_url_resolves(self):
         url = reverse('worker_signup')
         self.assertEquals(resolve(url).func, worker_signup)
 
-    @tag('unit-test')
     def test_About_url_resolves(self):
         url = reverse('About')
         self.assertEquals(resolve(url).func, about)
@@ -120,7 +113,7 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'aboutus.html')
 
 
-@tag('unit-test')
+@tag("unit_test")
 class Test_forms(TestCase):
     @tag('unit-test')
     def test_user_form(self):

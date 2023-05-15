@@ -1,4 +1,5 @@
-from email.headerregistry import Group
+# from email.headerregistry import Group
+from django.contrib.auth.models import Group
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 
@@ -7,6 +8,7 @@ from Boards import forms
 from django.contrib import messages, auth
 # from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
+from . import models
 
 # Create your views here.
 
@@ -37,6 +39,7 @@ def SignUp(request):
             passenger.user = user
             passenger.save()
             my_customer_group = Group.objects.get_or_create(name='PASSENGER')
+            a = Group
             my_customer_group[0].user_set.add(user)
             return redirect('home')
         else:
