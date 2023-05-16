@@ -38,3 +38,8 @@ class ContactUsForm(forms.ModelForm):
     class Meta:
         model = models.ContactUs
         fields = ['email', 'subject', 'Discrbition']
+
+class workerreportsForm(forms.ModelForm):
+    class Meta:
+        model = models.workerreports
+        fields = ['email', 'NumberPhone', 'Discrbition']

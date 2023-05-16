@@ -30,3 +30,8 @@ class ContactUs(models.Model):
     email = models.EmailField(null=False)
     subject = models.CharField(max_length=50, null=False)
     Discrbition = models.TextField()
+
+class workerreports(models.Model):
+    email = models.EmailField(null=False)
+    NumberPhone = models.CharField(max_length=50, null=False)
+    Discrbition = models.TextField()

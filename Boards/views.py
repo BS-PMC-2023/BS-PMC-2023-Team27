@@ -148,3 +148,20 @@ def ContactUs(request):
 
 def Contact(request):
     return render(request, 'ContactUs.html')
+
+def workerreports(request):
+    if request.method == 'POST':
+        CousForm = forms.workerreportsForm(request.POST)
+        print(CousForm)
+        print(CousForm.is_valid())
+
+        if CousForm.is_valid():
+            contact = CousForm.save(commit=False)
+            contact.save()
+            my_customer_group = Group.objects.get_or_create(name='ContactUs')
+
+        return redirect('homePage')
+    else:
+        return render(request, 'worker_reports.html')
+
+
