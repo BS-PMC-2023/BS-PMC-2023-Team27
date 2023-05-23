@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee49dbe4-c865-4510-9c5c-b72bad3fa859" name="Changes" comment="Unit test change">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boards/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Boards/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boards/test/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boards/test/test_~.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boards/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Boards/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="ee49dbe4-c865-4510-9c5c-b72bad3fa859" name="Changes" comment="Unit test change" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,6 +150,7 @@
       <workItem from="1683101883633" duration="167000" />
       <workItem from="1683102647875" duration="11025000" />
       <workItem from="1683127040465" duration="1109000" />
+      <workItem from="1683539683741" duration="210000" />
     </task>
     <task id="LOCAL‎-00001" summary="BSPMC2327-18 create page to add worker front end">
       <created>1682406068930</created>

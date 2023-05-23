@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Paypal</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+        <script>paypal.Buttons().render('#paypal-button-container');</script>
+        <link rel="stylesheet" href="{% static 'paypal.css' %}">
+
+
+    </head>
+    <body>
+        <h1>
+        <section class="password">
+            <label class="label">number</label>
+            <input type="number" class="input" required placeholder="Enter the code of the ticket" name="data.id" > 
+            <div style="" id="paypal-button-container" ></div>
+        </section>
+    </body>
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+</html>

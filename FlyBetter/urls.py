@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls import path
 
-from Boards import views 
+from Boards import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,11 +25,19 @@ urlpatterns = [
     path('HomePageadmin', views.HomePageadmin, name='HomePageadmin'),
     path('homePageWorker', views.homePageWorker, name='homePageWorker'),
     path('homePage', views.Home, name='homePage'),
-    path('SignUp',views.SignUp,name='SignUp'),
+    path('SignUp', views.SignUp, name='SignUp'),
     path('SignUpPage', views.SignUpPage, name='SignUpPage'),
-    path('',views.LogIN,name='home'),
+    path('', views.LogIN, name='home'),
     path('worker_signup', views.worker_signup, name='worker_signup'),
+<<<<<<< HEAD
     path('About',views.about,name='About'),
     path('airline', views.airline, name='airline'),
     
+=======
+    path('About', views.about, name='About'),
+    path('paypal', views.paypal, name='paypal'),
+
+
+
+>>>>>>> Yehians2
 ]

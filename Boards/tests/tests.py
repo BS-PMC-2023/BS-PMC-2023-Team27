@@ -11,6 +11,7 @@ from Boards.models import Worker, Passenger, User
 from Boards.forms import WorkerUserForm, WorkerForm
 
 
+@tag('unit-test')
 class TestUrls(SimpleTestCase):
 
     def test_homepageadmin_url_resolves(self):
@@ -42,18 +43,21 @@ class TestUrls(SimpleTestCase):
         self.assertEquals(resolve(url).func, about)
 
 
+@tag('unit-test')
 class TestViews(TestCase):
     def setUp(self):
         self.client = Client()
         self.Homeurl = reverse('home')
         self.homwpaurl = reverse('homePage')
 
+    @tag('unit-test')
     def test_homepage_view(self):
         client = Client()
         response = client.get(self.homwpaurl)
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html')
 
+    @tag('unit-test')
     def test_Home_view(self): '''
         client = Client()
         response = client.get(self.Homeurl)
@@ -66,36 +70,42 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'LogIn.html')'''
 
+    @tag('unit-test')
     def test_HomePageadmin_view(self):
         client = Client()
         response = client.get(reverse('HomePageadmin'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'HomePageadmin.html')
 
+    @tag('unit-test')
     def test_homePageWorker_view(self):
         client = Client()
         response = client.get(reverse('homePageWorker'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'homePageWorker.html')
 
+    @tag('unit-test')
     def test_Sign_up_view(self):
         client = Client()
         response = client.get(reverse('SignUp'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'SignUp.html')
 
+    @tag('unit-test')
     def test_SignUpPage_view(self):
         client = Client()
         response = client.get(reverse('SignUpPage'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'SignUp.html')
 
+    @tag('unit-test')
     def test_SignUpPage_view(self):
         client = Client()
         response = client.get(reverse('worker_signup'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'workersignup.html')
 
+    @tag('unit-test')
     def test_About_view(self):
         client = Client()
         response = client.get(reverse('About'))
@@ -103,8 +113,9 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'aboutus.html')
 
 
+@tag("unit_test")
 class Test_forms(TestCase):
-
+    @tag('unit-test')
     def test_user_form(self):
 
         form = WorkerUserForm(data={

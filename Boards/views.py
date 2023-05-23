@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 #from email.headerregistry import Group
+=======
+# from email.headerregistry import Group
+from django.contrib.auth.models import Group
+>>>>>>> Yehians2
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 import urllib
@@ -8,7 +13,11 @@ from Boards import forms
 from django.contrib import messages, auth
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
+<<<<<<< HEAD
 #import requests
+=======
+from . import models
+>>>>>>> Yehians2
 
 # Create your views here.
 
@@ -43,6 +52,7 @@ def SignUp(request):
             passenger.user = user
             passenger.save()
             my_customer_group = Group.objects.get_or_create(name='PASSENGER')
+            a = Group
             my_customer_group[0].user_set.add(user)
             return redirect('homePage')
         else:
@@ -132,6 +142,7 @@ def homePageWorker(request):
 def SignUpPage(request):
     return render(request, 'SignUp.html')
 
+<<<<<<< HEAD
 def airline(request):
     url = "https://skyscanner-api.p.rapidapi.com/v3e/flights/live/search/synced"
 
@@ -174,3 +185,8 @@ def airline(request):
 
 
     return render(request, 'airline.html', content)
+=======
+
+def paypal(request):
+    return render(request, "paypal.html")
+>>>>>>> Yehians2

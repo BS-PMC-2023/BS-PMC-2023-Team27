@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from . import models
 
 
-
 class WorkerUserForm(forms.ModelForm):
     class Meta:
         model = User
@@ -17,17 +16,18 @@ class WorkerUserForm(forms.ModelForm):
 class WorkerForm(forms.ModelForm):
     class Meta:
         model = models.Worker
-        fields = ['mobile', 'profile_pic','id_user']
+        fields = ['mobile', 'profile_pic', 'id_user']
 
 
 class PassengerUserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username','email', 'password']
+        fields = ['first_name', 'last_name', 'username', 'email', 'password']
         widgets = {
             'password': forms.PasswordInput()
 
         }
+
 
 class PassengerForm(forms.ModelForm):
     class Meta:
