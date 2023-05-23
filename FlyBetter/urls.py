@@ -29,15 +29,9 @@ urlpatterns = [
     path('SignUpPage', views.SignUpPage, name='SignUpPage'),
     path('', views.LogIN, name='home'),
     path('worker_signup', views.worker_signup, name='worker_signup'),
-<<<<<<< HEAD
-    path('About',views.about,name='About'),
-    path('airline', views.airline, name='airline'),
-    
-=======
     path('About', views.about, name='About'),
     path('paypal', views.paypal, name='paypal'),
 
 
 
->>>>>>> Yehians2
 ]

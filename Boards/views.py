@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-#from email.headerregistry import Group
-=======
 # from email.headerregistry import Group
 from django.contrib.auth.models import Group
->>>>>>> Yehians2
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 import urllib
@@ -13,23 +9,21 @@ from Boards import forms
 from django.contrib import messages, auth
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
-<<<<<<< HEAD
-#import requests
-=======
 from . import models
->>>>>>> Yehians2
+
 
 # Create your views here.
 
 
 def Home(request):
 
-    #url = 'https://data.gov.il/api/3/action/datastore_search?resource_id=e83f763b-b7d7-479e-b172-ae981ddc6de5&limit=5&q=title:jones'  
-    #response = urllib.urlopen(url)
-    
-    #return render(request, 'index.html',{'response':response})
-     return render(request,'index.html')
-     
+    # url = 'https://data.gov.il/api/3/action/datastore_search?resource_id=e83f763b-b7d7-479e-b172-ae981ddc6de5&limit=5&q=title:jones'
+    # response = urllib.urlopen(url)
+
+    # return render(request, 'index.html',{'response':response})
+    return render(request, 'index.html')
+
+
 def about(request):
 
     return render(request, 'aboutus.html')
@@ -57,7 +51,7 @@ def SignUp(request):
             return redirect('homePage')
         else:
             messages.error(request, 'Password do not match')
-            print ('error pass')
+            print('error pass')
             return redirect('SignUp')
 
     return render(request, 'SignUp.html', context=mydict)
@@ -104,7 +98,6 @@ def LogIN(request):
         elif request.user.groups.filter(name='PASSENGER'):
             return redirect('homePage')
     return render(request, 'LogIn.html')
-    
 
 
 def worker_signup(request):
@@ -142,51 +135,6 @@ def homePageWorker(request):
 def SignUpPage(request):
     return render(request, 'SignUp.html')
 
-<<<<<<< HEAD
-def airline(request):
-    url = "https://skyscanner-api.p.rapidapi.com/v3e/flights/live/search/synced"
-
-    payload = {"query": {
-        "market": "UK",
-        "locale": "en-GB",
-        "currency": "EUR",
-        "queryLegs": [
-            {
-                "originPlaceId": {"iata": "TLV"},
-                "destinationPlaceId": {"iata": "IST"},
-                "date": {
-                    "year": 2023,
-                    "month": 5,
-                    "day": 20
-                }
-            }
-        ],
-        "cabinClass": "CABIN_CLASS_ECONOMY",
-        "adults": 1,
-        "childrenAges": [3, 9]
-    }}
-    headers = {
-        "content-type": "application/json",
-        "X-RapidAPI-Key": "ca7e13dcdamsh488fef7d2d3885bp1212adjsn089ca6195eaf",
-        "X-RapidAPI-Host": "skyscanner-api.p.rapidapi.com"
-    }
-
-    response = requests.post(url, json=payload, headers=headers)
-
-    print(response.status_code)
-    data = response.text
-
-    content={
-        'data':data,
-
-
-    }
-
-
-
-    return render(request, 'airline.html', content)
-=======
 
 def paypal(request):
     return render(request, "paypal.html")
->>>>>>> Yehians2
