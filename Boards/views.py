@@ -1,4 +1,4 @@
-from email.headerregistry import Group
+#from email.headerregistry import Group
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 import urllib
@@ -82,7 +82,7 @@ def LogIN(request):
                 return redirect('HomePageadmin')
             elif user is not None and user.groups.filter(name='PASSENGER').exists():
                 auth.login(request, user)
-                return redirect('Home')
+                return redirect('homePage')
             elif user is not None and user.groups.filter(name='WORKER').exists():
                 auth.login(request, user)
                 return redirect('homePageWorker')
@@ -92,7 +92,7 @@ def LogIN(request):
         elif request.user.groups.filter(name='WORKER'):
             return redirect('homePageWorker')
         elif request.user.groups.filter(name='PASSENGER'):
-            return redirect('Home')
+            return redirect('homePage')
     return render(request, 'LogIn.html')
     
 
