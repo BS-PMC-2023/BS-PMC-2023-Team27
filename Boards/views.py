@@ -11,11 +11,11 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 
-def Home(request):
+def homePage(request):
     return render(request, 'index.html')
 
 
-def about(request):
+def aboutus(request):
 
     return render(request, 'aboutus.html')
 
@@ -150,18 +150,24 @@ def Contact(request):
     return render(request, 'ContactUs.html')
 
 def workerreports(request):
+    # workerreportsForm = forms.workerreportsForm()
+    # dect = {'rep': workerreportsForm}
     if request.method == 'POST':
-        CousForm = forms.workerreportsForm(request.POST)
-        print(CousForm)
-        print(CousForm.is_valid())
+        print("aaa")
+        # email = request.POST['email']
+        # NumberPhone = request.POST['NumberPhone']
+        # Discrbition = request.POST['Discrbition']
+        wo_re_fo = forms.workerreportsForm(request.POST)
+        
+        print(wo_re_fo.is_valid())
 
-        if CousForm.is_valid():
-            contact = CousForm.save(commit=False)
-            contact.save()
-            my_customer_group = Group.objects.get_or_create(name='ContactUs')
+        if wo_re_fo.is_valid():
+            report = wo_re_fo.save(commit=False)
+            report.save()
+            my_customer_group = Group.objects.get_or_create(name='WORKERREPORT')
 
-        return redirect('homePage')
+        return redirect('homePageWorker')
     else:
-        return render(request, 'worker_reports.html')
+        return render(request, 'workerreports.html')
 
 
