@@ -15,7 +15,7 @@ from . import models
 # Create your views here.
 
 
-def Home(request):
+def homePage(request):
 
     # url = 'https://data.gov.il/api/3/action/datastore_search?resource_id=e83f763b-b7d7-479e-b172-ae981ddc6de5&limit=5&q=title:jones'
     # response = urllib.urlopen(url)
@@ -24,7 +24,7 @@ def Home(request):
     return render(request, 'index.html')
 
 
-def about(request):
+def aboutus(request):
 
     return render(request, 'aboutus.html')
 
@@ -138,3 +138,46 @@ def SignUpPage(request):
 
 def paypal(request):
     return render(request, "paypal.html")
+
+def ContactUs(request):
+    # ContactusForm = forms.ContactUsForm()
+    # dect = {'Con': ContactusForm}
+    if request.method == 'POST':
+        # email = request.POST['email']
+        # subject = request.POST['subject']
+        # Discrbition = request.POST['Discrbition']
+
+        CousForm = forms.ContactUsForm(request.POST)
+        print(CousForm)
+        print(CousForm.is_valid())
+
+        if CousForm.is_valid():
+            contact = CousForm.save(commit=False)
+            contact.save()
+            my_customer_group = Group.objects.get_or_create(name='ContactUs')
+
+        return redirect('homePage')
+    else:
+        return render(request, 'ContactUs.html')
+
+
+def Contact(request):
+    return render(request, 'ContactUs.html')
+
+def workerreport(request):
+
+    if request.method == 'POST':
+    
+        wo_re = forms.workerreportForm(request.POST)
+        print(wo_re.is_valid())
+
+        if wo_re.is_valid():
+            report = wo_re.save(commit=False)
+            report.save()
+            my_customer_group = Group.objects.get_or_create(name='workerreport')
+
+        return redirect('homePageWorker')
+    else:
+        return render(request, 'workerreport.html')
+
+

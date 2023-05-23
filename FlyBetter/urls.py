@@ -24,13 +24,18 @@ urlpatterns = [
     path('logout', LogoutView.as_view(next_page='home'), name='logout'),
     path('HomePageadmin', views.HomePageadmin, name='HomePageadmin'),
     path('homePageWorker', views.homePageWorker, name='homePageWorker'),
-    path('homePage', views.Home, name='homePage'),
+    path('homePage', views.homePage, name='homePage'),
+    path('home', views.homePage, name='home'),
     path('SignUp', views.SignUp, name='SignUp'),
     path('SignUpPage', views.SignUpPage, name='SignUpPage'),
     path('', views.LogIN, name='home'),
     path('worker_signup', views.worker_signup, name='worker_signup'),
-    path('About', views.about, name='About'),
+    path('aboutus', views.aboutus, name='aboutus'),
     path('paypal', views.paypal, name='paypal'),
+    path('ContactUs', views.ContactUs, name='ContactUs'),
+    path('Contact', views.Contact, name='Contact'),
+    path('workerreport', views.workerreport, name='workerreport'),
+
 
 
 

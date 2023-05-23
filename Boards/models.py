@@ -26,3 +26,13 @@ class Worker(models.Model):
 
     def __str__(self):
         return self.user.first_name
+
+class ContactUs(models.Model):
+    email = models.EmailField(null=False)
+    subject = models.CharField(max_length=50, null=False)
+    Discrbition = models.TextField()
+
+class workerreport(models.Model):
+    email = models.EmailField(null=False)
+    phonenumber = models.CharField(max_length=50, null=False)
+    Discrbition = models.TextField()
