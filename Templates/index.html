@@ -119,15 +119,18 @@
             <li>
               <a href="#contact" class="navbar-link" data-nav-link>contact us</a>
             </li>
+
+            
             <li>
               <a href="logout" class="navbar-link" data-nav-link>Log out</a>
             </li>
+
 
           </ul>
 
         </nav>
 
-        <button class="btn btn-primary">Book Now</button>
+        <button href="{% url 'airline' %}" class="btn btn-primary">Book Now</button>
 
       </div>
     </div>
@@ -157,15 +160,15 @@
           <div class="btn-group">
             <button class="btn btn-primary">Learn more</button>
 
-            <button class="btn btn-secondary">Book now</button>
+            <button href="{% url 'airline' %}" class="btn btn-secondary">Book now</button>
           </div>
 
         </div>
       </section>
 
-
      
-      <!-- 
+
+        <!-- 
         - #GALLERY
       -->
 

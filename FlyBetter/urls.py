@@ -30,5 +30,6 @@ urlpatterns = [
     path('',views.LogIN,name='home'),
     path('worker_signup', views.worker_signup, name='worker_signup'),
     path('About',views.about,name='About'),
+    path('airline', views.airline, name='airline'),
     
 ]
