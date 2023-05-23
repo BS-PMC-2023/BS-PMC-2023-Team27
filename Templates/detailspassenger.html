@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .delete-button, .review-button {
+            padding: 6px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .delete-button:hover, .review-button:hover {
+            background-color: #45a049;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Passengers</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        {% for passenger in passengers %}
+        <tr>
+            <td>{{ passenger.id }}</td>
+            <td>{{ passenger.id_user_P.first_name }}</td>
+            <td>{{ passenger.id_user_P.last_name }}</td>
+            <td>{{ passenger.id_user_P.username }}</td>
+            <td>{{ passenger.id_user_P.email }}</td>
+            <td>
+                <button class="delete-button" data-id="{{ passenger.id }}">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>

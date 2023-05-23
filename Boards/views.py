@@ -10,6 +10,8 @@ from django.contrib import messages, auth
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from . import models
+from .models import Passenger
+
 
 
 # Create your views here.
@@ -181,3 +183,6 @@ def workerreport(request):
         return render(request, 'workerreport.html')
 
 
+def Table_passenger(request):
+    passengers = Passenger.objects.all()
+    return render(request, 'detailspassenger.html', {'passengers': passengers})

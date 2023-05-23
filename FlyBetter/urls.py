@@ -35,6 +35,7 @@ urlpatterns = [
     path('ContactUs', views.ContactUs, name='ContactUs'),
     path('Contact', views.Contact, name='Contact'),
     path('workerreport', views.workerreport, name='workerreport'),
+    path('Table_passenger',views.Table_passenger,name='Table_passenger')
 
 
 
