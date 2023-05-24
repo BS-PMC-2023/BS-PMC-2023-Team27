@@ -37,9 +37,11 @@ urlpatterns = [
     path('workerreport', views.workerreport, name='workerreport'),
     path('Table_passenger',views.Table_passenger,name='Table_passenger'),
     path('delete_passenger/<int:passenger_id>/', views.delete_passenger, name='delete_passenger'),
-
-
-
-
+    path('Table_Worker/', views.Table_worker, name='Table_worker'),
+    path('delete_worker/<int:worker_id>/', views.delete_worker, name='delete_worker'),
 
 ]
+
+
+
+
