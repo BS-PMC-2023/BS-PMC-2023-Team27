@@ -9,6 +9,7 @@ class Passenger(models.Model):
     id_user_P = models.IntegerField()
 
 
+
 class Worker(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     id_user = models.IntegerField()

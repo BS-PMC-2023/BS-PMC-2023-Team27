@@ -41,10 +41,10 @@
         {% for passenger in passengers %}
         <tr>
             <td>{{ passenger.id }}</td>
-            <td>{{ passenger.id_user_P.first_name }}</td>
-            <td>{{ passenger.id_user_P.last_name }}</td>
-            <td>{{ passenger.id_user_P.username }}</td>
-            <td>{{ passenger.id_user_P.email }}</td>
+            <td>{{ passenger.user.first_name }}</td>
+            <td>{{ passenger.user.last_name }}</td>
+            <td>{{ passenger.user.username }}</td>
+            <td>{{ passenger.user.email }}</td>
             <td>
                 
                 <button class="delete-button" data-id="{{ passenger.id }}">Delete passenger</button>
