@@ -164,7 +164,7 @@ def ContactUs(request):
 def Contact(request):
     return render(request, 'ContactUs.html')
 
-def workerreport(request):
+def workersReport(request):
 
     if request.method == 'POST':
     
@@ -181,3 +181,12 @@ def workerreport(request):
         return render(request, 'workerreport.html')
 
 
+# my_customer_group = Group.objects.get_or_create(name='PASSENGER')
+
+
+def viewAllReports(request):
+    context = {}
+    if request.method == 'GET':        
+        result = models.workerreport.objects.all()
+        context = {"result":result}
+    return render(request, 'viewAllReports.html',context=context)

@@ -34,7 +34,10 @@ urlpatterns = [
     path('paypal', views.paypal, name='paypal'),
     path('ContactUs', views.ContactUs, name='ContactUs'),
     path('Contact', views.Contact, name='Contact'),
-    path('workerreport', views.workerreport, name='workerreport'),
+    path('workerreport', views.workersReport, name='workerreport'),
+    path('viewAllReports', views.viewAllReports, name='viewAllReports'),
+
+
 
 
 
