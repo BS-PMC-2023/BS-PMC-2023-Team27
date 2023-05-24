@@ -47,8 +47,11 @@
             <td>{{ passenger.user.email }}</td>
             <td>
                 
-                <button class="delete-button" data-id="{{ passenger.id }}">Delete passenger</button>
-                
+                >
+                <form action="{% url 'delete_passenger' passenger.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-button"  data-id="{{ passenger.id }}">Delete</button>
+                </form>                
             </td>
         </tr>
         {% endfor %}

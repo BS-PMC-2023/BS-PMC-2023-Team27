@@ -11,6 +11,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from . import models
 from .models import Passenger
+from django.shortcuts import get_object_or_404
 
 
 
@@ -186,3 +187,9 @@ def workerreport(request):
 def Table_passenger(request):
     passengers = Passenger.objects.all()
     return render(request, 'detailspassenger.html', {'passengers': passengers})
+
+def delete_passenger(request,passenger_id):
+    passenger = get_object_or_404(Passenger,id=passenger_id)
+    passenger.user.delete()
+    passenger.delete()
+    return redirect('Table_passenger')
