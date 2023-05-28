@@ -42,6 +42,7 @@ urlpatterns = [
     path('EditWorkerEmail/<int:id>', views.EditWorkerEmail, name='EditWorkerEmail'),
     path('EditWorkermobile/<int:id>', views.EditWorkermobile, name='EditWorkermobile'),
 
+
     
 
     

@@ -192,6 +192,7 @@ def viewAllReports(request):
     return render(request, 'viewAllReports.html',context=context)
 
 def EditWorker(request):
+    
     context = {}
     if request.method == 'GET':        
         result = models.Worker.objects.all()
@@ -199,6 +200,7 @@ def EditWorker(request):
     return render(request, 'EditWorker.html',context=context)
 
 def EditWorkerusername(request, id):
+
     print("id",id)
     if request.method == 'POST':
         worker = models.Worker.objects.get(user_id=id)
@@ -208,6 +210,7 @@ def EditWorkerusername(request, id):
     return render(request, 'EditWorkerusername.html')
 
 def EditWorkerIDuser(request, id):
+
     if request.method == 'POST':
         worker = models.Worker.objects.get(user_id=id)
         worker.id_user= request.POST['id_user']
@@ -216,6 +219,7 @@ def EditWorkerIDuser(request, id):
     return render(request, 'EditWorkerIDuser.html')
 
 def EditWorkerEmail(request, id):
+
     if request.method == 'POST':
         worker = models.Worker.objects.get(user_id=id)
         worker.email= request.POST['email']
@@ -224,6 +228,7 @@ def EditWorkerEmail(request, id):
     return render(request, 'EditWorkerEmail.html')
 
 def EditWorkermobile(request, id):
+
     if request.method == 'POST':
         worker = models.Worker.objects.get(user_id=id)
         worker.mobile= request.POST['mobile']
