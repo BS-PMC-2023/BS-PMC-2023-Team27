@@ -63,13 +63,13 @@
             <tr>
                 
                 <td>{{x.user}}</td>
-                <td><a href="{% url 'EditWorkerusername' x.user_id  %}"><button style="float: right">Edit</button><i class="bi bi-arrow-up-circle-fill"></i></a></td>
+                <td><a href="{% url 'EditWorkerusername' x.user_id  %}"> <button style="float: right">Edit</button><i class="bi bi-arrow-up-circle-fill"></i></a></td>
                 <td>{{x.id_user}}</td>
-                <td><a href="{% url 'EditWorkerIDuser' x.user_id  %}"><button style="float: right">Edit</button><i class="bi bi-arrow-up-circle-fill"></i></a></td>
+                <td><a href="{% url 'EditWorkerIDuser' x.user_id  %}"> <button style="float: right">Edit</button><i class="bi bi-arrow-up-circle-fill"></i></a></td>
                 <td>{{x.email}}</td>
-                <td><a href="{% url 'EditWorkerEmail' x.user_id  %}"><button style="float: right">Edit</button><i class="bi bi-arrow-up-circle-fill"></i></a></td>
+                <td><a href="{% url 'EditWorkerEmail' x.user_id  %}"> <button style="float: right">Edit</button><i class="bi bi-arrow-up-circle-fill"></i></a></td>
                 <td>{{x.mobile}}</td>
-                <td><a href="{% url 'EditWorkermobile' x.user_id  %}"><button style="float: right">Edit</button><i class="bi bi-arrow-up-circle-fill"></i></a></td>
+                <td><a href="{% url 'EditWorkermobile' x.user_id  %}"> <button style="float: right">Edit</button><i class="bi bi-arrow-up-circle-fill"></i></a></td>
             </tr>
         {% endfor %}
 
