@@ -12,9 +12,9 @@ class Passenger(models.Model):
 class Worker(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     id_user = models.IntegerField()
-    profile_pic = models.ImageField(
-        upload_to='profile_pic/CustomerProfilePic/', null=True, blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pic/CustomerProfilePic/', null=True, blank=True)
     mobile = models.CharField(max_length=20, null=False)
+    email = models.EmailField(null=False,default="")
 
     @property
     def get_name(self):

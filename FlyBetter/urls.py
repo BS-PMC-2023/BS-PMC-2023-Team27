@@ -36,6 +36,17 @@ urlpatterns = [
     path('Contact', views.Contact, name='Contact'),
     path('workerreport', views.workersReport, name='workerreport'),
     path('viewAllReports', views.viewAllReports, name='viewAllReports'),
+    path('EditWorker', views.EditWorker, name='EditWorker'),
+    path('EditWorkerusername/<int:id>', views.EditWorkerusername, name='EditWorkerusername'),
+    path('EditWorkerIDuser/<int:id>', views.EditWorkerIDuser, name='EditWorkerIDuser'),
+    path('EditWorkerEmail/<int:id>', views.EditWorkerEmail, name='EditWorkerEmail'),
+    path('EditWorkermobile/<int:id>', views.EditWorkermobile, name='EditWorkermobile'),
+
+    
+
+    
+   
+
 
 
 

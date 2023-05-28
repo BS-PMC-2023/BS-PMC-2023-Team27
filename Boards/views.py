@@ -190,3 +190,46 @@ def viewAllReports(request):
         result = models.workerreport.objects.all()
         context = {"result":result}
     return render(request, 'viewAllReports.html',context=context)
+
+def EditWorker(request):
+    context = {}
+    if request.method == 'GET':        
+        result = models.Worker.objects.all()
+        context = {"result":result}
+    return render(request, 'EditWorker.html',context=context)
+
+def EditWorkerusername(request, id):
+    print("id",id)
+    if request.method == 'POST':
+        worker = models.Worker.objects.get(user_id=id)
+        worker.user.username= request.POST['username']
+        worker.user.save()
+        return redirect('EditWorker')
+    return render(request, 'EditWorkerusername.html')
+
+def EditWorkerIDuser(request, id):
+    if request.method == 'POST':
+        worker = models.Worker.objects.get(user_id=id)
+        worker.id_user= request.POST['id_user']
+        worker.save()
+        return redirect('EditWorker')
+    return render(request, 'EditWorkerIDuser.html')
+
+def EditWorkerEmail(request, id):
+    if request.method == 'POST':
+        worker = models.Worker.objects.get(user_id=id)
+        worker.email= request.POST['email']
+        worker.save()
+        return redirect('EditWorker')
+    return render(request, 'EditWorkerEmail.html')
+
+def EditWorkermobile(request, id):
+    if request.method == 'POST':
+        worker = models.Worker.objects.get(user_id=id)
+        worker.mobile= request.POST['mobile']
+        worker.save()
+        return redirect('EditWorker')
+    return render(request, 'EditWorkermobile.html')
+
+
+   

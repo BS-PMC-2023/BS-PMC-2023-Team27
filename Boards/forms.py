@@ -16,7 +16,7 @@ class WorkerUserForm(forms.ModelForm):
 class WorkerForm(forms.ModelForm):
     class Meta:
         model = models.Worker
-        fields = ['mobile', 'profile_pic', 'id_user']
+        fields = ['mobile', 'profile_pic', 'id_user','email']
 
 
 class PassengerUserForm(forms.ModelForm):

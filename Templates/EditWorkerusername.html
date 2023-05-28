@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Signup Page</title>
+        <title>Edit Worker username</title>
         <style>
             body{
                 font-family: Arial, Helvetica, sans-serif;
@@ -54,30 +54,17 @@
         </style>
     </head>
     <body>
-        <center><h1>Register From</h1></center>
-        <form action="worker_signup" method="post">
+        <center><h1>Edit Worker username</h1></center>
+        <form  method="post">
             {% csrf_token %}
             {% load static %}
             <center><div class="container">
-                <div class="imgcontainer">
-                    <img src="{% static 'avatar_img2.png' %}" alt="Avatar" class="avatar">
-                </div>
-                <label for='first_name'><b>First Name : </b></label>
-		        <input type='text' placeholder="Enter your first name" name='first_name' required><br>
-		        <label for='last_name'><b>Last Name :</b></label>
-		        <input type='text' placeholder='Enter your last name' name='last_name' required><br>
-                <label for ='email'><b>Email :  </b></label>
-            	<input type="text" placeholder="Enter email" name="email" float="right"  required><br>
-                 <label for='id_user'><b>ID : </b></label>
-		        <input type='text' placeholder="Enter your ID" name='id_user' required><br>
-                <label for ='mobile'><b>Number Phone :  </b></label>
-            	<input type="text" placeholder="Enter mobile" name="mobile"  required><br>
-            	<label for ='username'><b>Username :  </b></label>
-            	<input type="text" placeholder="Enter username" name="username" float="right"  required><br>
-            	<label for='password'><b>Password : </b></label>
-            	<input type="text" placeholder="Enter Password" name="password" required><br>  
-            	<button type="submit"><b>Signup</b></button><br>     
-            	Back to Home <a href="/HomePageadmin"> Admin Page</a>
+                <label for ='username'><b>New username :  </b></label>
+            	<input type="text" placeholder="Enter New username" name="username" float="right"  required><br>
+            	
+                <button type="submit"><b>Save</b></button><br>     
+                
+        
             </div></center>
         </form>
     </body>
