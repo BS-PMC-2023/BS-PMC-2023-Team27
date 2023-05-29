@@ -1,4 +1,4 @@
-from Boards.views import HomePageadmin, homePageWorker, LogIN, SignUpPage, SignUp, worker_signup, about
+from Boards.views import ContactUs, EditWorker, EditWorkerEmail, EditWorkerIDuser, EditWorkermobile, EditWorkerusername, HomePageadmin, aboutus, homePageWorker, LogIN, SignUpPage, SignUp, viewAllReports, worker_signup, about, workersReport
 from django.urls import resolve, reverse
 from django.test import tag
 from django.test import SimpleTestCase
@@ -48,7 +48,7 @@ class TestUrls(SimpleTestCase):
     
     def test_workerreport_url_resolves(self):
         url = reverse('workerreport')
-        self.assertEquals(resolve(url).func, workerreport)
+        self.assertEquals(resolve(url).func, workersReport)
     
     def test_viewAllReports_url_resolves(self):
         url = reverse('viewAllReports')
@@ -145,6 +145,8 @@ class TestViews(TestCase):
         response = client.get(reverse('About'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'aboutus.html')
+
+
 
 
 @tag("unit_test")
