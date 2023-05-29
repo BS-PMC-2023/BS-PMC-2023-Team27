@@ -38,9 +38,43 @@ class TestUrls(SimpleTestCase):
         url = reverse('worker_signup')
         self.assertEquals(resolve(url).func, worker_signup)
 
-    def test_About_url_resolves(self):
-        url = reverse('About')
-        self.assertEquals(resolve(url).func, about)
+    def test_aboutus_url_resolves(self):
+        url = reverse('aboutus')
+        self.assertEquals(resolve(url).func, aboutus)
+    
+    def test_ContactUs_url_resolves(self):
+        url = reverse('ContactUs')
+        self.assertEquals(resolve(url).func, ContactUs)
+    
+    def test_workerreport_url_resolves(self):
+        url = reverse('workerreport')
+        self.assertEquals(resolve(url).func, workerreport)
+    
+    def test_viewAllReports_url_resolves(self):
+        url = reverse('viewAllReports')
+        self.assertEquals(resolve(url).func, viewAllReports)
+    
+    def test_EditWorker_url_resolves(self):
+        url = reverse('EditWorker')
+        self.assertEquals(resolve(url).func, EditWorker)
+    
+    def test_EditWorkerusername_url_resolves(self):
+        url = reverse('EditWorkerusername')
+        self.assertEquals(resolve(url).func, EditWorkerusername)
+    
+    def test_EditWorkerIDuser_url_resolves(self):
+        url = reverse('EditWorkerIDuser')
+        self.assertEquals(resolve(url).func, EditWorkerIDuser)
+    
+    def test_EditWorkerEmail_url_resolves(self):
+        url = reverse('EditWorkerEmail')
+        self.assertEquals(resolve(url).func, EditWorkerEmail)
+    
+    def test_EditWorkermobile_url_resolves(self):
+        url = reverse('EditWorkermobile')
+        self.assertEquals(resolve(url).func, EditWorkermobile)
+
+   
 
 
 @tag('unit-test')
