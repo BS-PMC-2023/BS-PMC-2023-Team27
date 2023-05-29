@@ -145,6 +145,70 @@ class TestViews(TestCase):
         response = client.get(reverse('About'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'aboutus.html')
+    
+    @tag('unit-test')
+    def test_ContactUs_view(self):
+        client = Client()
+        response = client.get(reverse('ContactUs'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ContactUs.html')    
+    
+    @tag('unit-test')
+    def test_workerreport_view(self):
+        client = Client()
+        response = client.get(reverse('workerreport'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'workerreport.html')
+    
+    
+    @tag('unit-test')
+    def test_viewAllReports_view(self):
+        client = Client()
+        response = client.get(reverse('viewAllReports'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'viewAllReports.html')
+    
+    
+    @tag('unit-test')
+    def test_EditWorker_view(self):
+        client = Client()
+        response = client.get(reverse('EditWorker'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'EditWorker.html')
+
+    
+    
+    @tag('unit-test')
+    def test_EditWorkerusername_view(self):
+        client = Client()
+        response = client.get(reverse('EditWorkerusername'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'EditWorkerusername.html')
+
+    
+    
+    @tag('unit-test')
+    def test_EditWorkerIDuser_view(self):
+        client = Client()
+        response = client.get(reverse('EditWorkerIDuser'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'EditWorkerIDuser.html')
+    
+    
+    @tag('unit-test')
+    def test_EditWorkerEmail_view(self):
+        client = Client()
+        response = client.get(reverse('EditWorkerEmail'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'EditWorkerEmail.html')
+    
+    
+    @tag('unit-test')
+    def test_EditWorkermobile_view(self):
+        client = Client()
+        response = client.get(reverse('EditWorkermobile'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'EditWorkermobile.html')
 
 
 
