@@ -236,5 +236,8 @@ def EditWorkermobile(request, id):
         return redirect('EditWorker')
     return render(request, 'EditWorkermobile.html')
 
+def vieworders(request):
+    return render(request, 'vieworders.html')
+
 
    

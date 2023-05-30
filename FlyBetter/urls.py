@@ -41,6 +41,10 @@ urlpatterns = [
     path('EditWorkerIDuser/<int:id>', views.EditWorkerIDuser, name='EditWorkerIDuser'),
     path('EditWorkerEmail/<int:id>', views.EditWorkerEmail, name='EditWorkerEmail'),
     path('EditWorkermobile/<int:id>', views.EditWorkermobile, name='EditWorkermobile'),
+    path('vieworders', views.vieworders, name='vieworders'),
+
+    
+
 
 
     
