@@ -254,7 +254,11 @@ def EditWorkermobile(request, id):
     return render(request, 'EditWorkermobile.html')
 
 def vieworders(request):
-    return render(request, 'vieworders.html')
+    context = {}
+    if request.method == 'GET':
+        result = models.Order.objects.all()
+        context = {"result": result}
+    return render(request, 'vieworders.html',context=context)
 
 
 def menu(request):
