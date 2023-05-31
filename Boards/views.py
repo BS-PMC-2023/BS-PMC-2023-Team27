@@ -243,3 +243,7 @@ def EditWorkermobile(request, id):
         worker.save()
         return redirect('EditWorker')
     return render(request, 'EditWorkermobile.html')
+
+
+def menu(request):
+    return render(request, 'Menu.html')
