@@ -8,6 +8,7 @@ from datetime import datetime
 import json
 
 import requests
+import pip._vendor.requests
 
 from Boards import forms
 
@@ -266,7 +267,7 @@ def getorder(request):
             a = Order.objects.create(name=items[i])
             a.save()
 
-        return redirect('home')
+        return redirect('HomePageadmin')
     return render(request, 'Menu.html')
 
 

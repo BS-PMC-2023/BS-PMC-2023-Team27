@@ -1,0 +1,101 @@
+
+      .form {
+        width: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .form-row {
+        width: 800px;
+        justify-content: center;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .form-group {
+        flex-basis: 50%;
+        justify-content: center;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"] {
+        width: 50%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .Bx {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .LegLogo_legImage__MmY0Z img {
+        height: 40px;
+      }
+
+      .By {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 10px;
+      }
+
+      .Bm,
+      .Bn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .Ba {
+        margin: 2px 0;
+      }
+
+      .Bb {
+        font-weight: bold;
+      }
+
+      .Bc {
+        font-size: 12px;
+      }
+
+      .Bd {
+        margin: 0 10px;
+      }
+
+      .Be {
+        fill: #898294;
+        width: 12px;
+        height: 12px;
+      }
+
+      .Bf {
+        display: flex;
+        align-items: center;
+      }
+
+      .Bc.Bj {
+        color: green;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+
+      .Bk {
+        margin-top: 5px;
+      }
+
+      .Bl {
+        font-size: 10px;
+      }
+   
