@@ -247,3 +247,16 @@ def EditWorkermobile(request, id):
 
 def menu(request):
     return render(request, 'Menu.html')
+
+
+def getorder(request):
+    items = []
+    if request.method == 'POST':
+        items = request.POST.getlist('item')
+        c = list(items)
+        for i in range(len(c)):
+            # a=Order.objects.create(name=items[i])
+            # a.save()
+            print()
+        return redirect('home')
+    return render(request, 'Menu.html')
