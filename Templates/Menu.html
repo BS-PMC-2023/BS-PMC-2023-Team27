@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu</title>
+    <style>
+      body {
+        font-family: "Lexend", Arial, sans-serif;
+        background-color: #f0ffff;
+        padding: 20px 0 40px;
+        margin: 0;
+      }
+      .menu-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0px;
+        background-color: #fff;
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      .menu-item {
+        width: 200px;
+        height: 190px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        border: 3px solid #ccc;
+        border-radius: 5px;
+        padding: 15px;
+      }
+
+      .item-image {
+        width: 90px;
+        height: 110px;
+
+        margin-right: 5px;
+        border-radius: 10px;
+      }
+
+      .item-details {
+        flex-grow: 1;
+      }
+
+      .item-name {
+        font-weight: bold;
+      }
+
+      .item-price {
+        color: #888;
+      }
+
+      .item-description {
+        margin-top: 10px;
+      }
+
+      input[type="checkbox"] {
+        margin-right: 20px;
+      }
+
+      .submit-button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .submit-button:hover {
+        background-color: #555;
+      }
+
+      h2 {
+        color: #111;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      p {
+        color: #111;
+        font-size: 18px;
+        line-height: 27px;
+        text-align: center;
+        margin: 0;
+      }
+
+      a {
+        color: #2a945b;
+        text-decoration: none;
+      }
+
+      .plans-module-main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      .plans-inner {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="getorder" method="POST">
+      {% csrf_token %}
+
+      <div class="plans-module-main">
+        <div class="plans-inner">
+          <div class="menu-container">
+            <h1>Menu</h1>
+            <table>
+              <tr>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item1"
+                      name="item"
+                      value="Breakfast Deal: Chocolate Muffin + Cappuccino"
+                    />
+                    <label for="item1">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/UnKOd8Php0qDLdCw_BFDimRoOe0pjUnkCuiCzgojg58/299x,jpeg/Y2F0YWxvZy9mL2EvYy8xL2ZhYzFjOTAwMjY1NTIxY2FmMTZjZThjMGIzZWY3MmMyZmVkYWJkYzNfQnJlYWtmYXN0X0RlYWxfTXVmZmluX2RlX0Nob2NvbGF0ZV9DYXBwdWNjaW5vLnBuZw"
+                        alt="Chicken Pasta"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Breakfast Deal: Chocolate Muffin + Cappuccino</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item2"
+                      name="item"
+                      value="Breakfast Deal: Chocolate Muffin + Espresso illy"
+                    />
+                    <label for="item2">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/a1ZJsX_U-S2mzTnnuYjGCr7s9FwEfSUm7q1BtnOPQZo/299x,jpeg/Y2F0YWxvZy9jL2UvMi9jL2NlMmM0NzQwMjEzNjdhNWM1NDNkYmFhY2Y3NmYxYmRmNGZmZGQ5ODdfQnJlYWtmYXN0X0RlYWxfTXVmZmluX2RlX0Nob2NvbGF0ZV9fRXNwcmVzc29faWxseS5wbmc"
+                        alt="Margherita Pizza"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Breakfast Deal: Chocolate Muffin + Espresso
+                          illy</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item3"
+                      name="item"
+                      value="Meal Deal: Lasagna Bolognese + Soft Drink"
+                    />
+                    <label for="item3">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/mIPHYhWSQDPSqmxanAonxYocgLc36vztfbs0iXXB_X0/299x,jpeg/Y2F0YWxvZy9lL2YvOS83L2VmOTcyNmVmNjk2MTJjZDc5ZTJmMDhkMDcxMjJkNzAxYzBhODdkM2VfTWVhbF9EZWFsX0xhc2FfX2FfQm9sb19fZXNhX1JlZnJlc2NvLnBuZw"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Meal Deal: Lasagna Bolognese + Soft Drink</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item1"
+                      name="item"
+                      value="Chicken rice + Soft Drink"
+                    />
+                    <label for="item1">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/zXuQNq4DTpTyCxT-G0LxVbAffb8qY_PSfrb3-Xfgw08/299x,jpeg/Y2F0YWxvZy83L2QvOC9mLzdkOGZhODg3N2VhY2RjYTNjODA0YzRiNmFkMTg4MGIwN2ZmYWM5ODBfTWVhbF9EZWFsX0Fycm96X2Nvbl9Qb2xsb19SZWZyZXNjby5wbmc"
+                        alt="Chicken Pasta"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Chicken rice + Soft Drink</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item2"
+                      name="item"
+                      value="Rice With Chicken And Vegetables  "
+                    />
+                    <label for="item2">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/Ym-Ct2EPVdmbUODsKH69NDm9VOTZ8noacjD_gPr7noo/299x,jpeg/Y2F0YWxvZy9kL2YvYy8yL2RmYzJkNjIxMjY4Zjk0MDMwMTAyY2RiZWI1ZjE2ZTUxZDdkMTgzNThfMTE5NzQ5XzEucG5n"
+                        alt="Margherita Pizza"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Rice With Chicken And Vegetables
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item3"
+                      name="item"
+                      value="Cheeseburger"
+                    />
+                    <label for="item3">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/hplJLesLxNiH1LHDkZyStUGeID3QJPOczKgv126FWWM/299x,jpeg/Y2F0YWxvZy8xLzYvNS80LzE2NTQzMTI1OWU1MWIzNThjNzNjOGU1MWMyMDUxM2VhODc2OGYwZWZfUVVJTk9BX1NBTEFELnBuZw"
+                        alt="Cheeseburger"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name">Cheeseburger </span>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item1"
+                      name="item"
+                      value="Alfredo Pasta with Mushrooms, 320g"
+                    />
+                    <label for="item1">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/UhE3Bw_J7Ap1X95JzhHDMTrH0T_Q420D4H3L5nWEejg/299x,jpeg/Y2F0YWxvZy8yLzkvNS9mLzI5NWZmYjBjMGVhODZmOGMwNmYzZmFhODYzZDNhMjJhODM2YzRkMzRfUEFTVEFfQUxGUkVETy5wbmc"
+                        alt="Chicken Pasta"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Alfredo Pasta with Mushrooms, 320g</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item2"
+                      name="item"
+                      value="Iberian ham sandwich with EVOO"
+                    />
+                    <label for="item2">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/kZ9nyvXEbKpM00dpVyG77lgVWDd7gDj9wCDYAT4gKMA/299x,jpeg/Y2F0YWxvZy83L2YvYy8wLzdmYzBlMTZlZWRiNjRiYjBmMjFhMmRiZWEzZTU3MzhlNjAzZTM3NzNfMTE5Nzg0XzEucG5n"
+                        alt="Margherita Pizza"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Iberian ham sandwich with EVOO</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item3"
+                      name="item"
+                      value="Chicken Focaccella with Honey and Mustard Sauce"
+                    />
+                    <label for="item3">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/srG3XnOfYwmX8qhRXJAwr2wtIrxk7rxQ7bIOIPf1xq4/299x,jpeg/Y2F0YWxvZy9jLzQvNi81L2M0NjVhNTNhMjlkZTllMTYwOTQ3YWQwZjkwNjA3YzdmYWY4YmRiZmVfMTIwNTQ3XzEucG5n"
+                        alt="Cheeseburger"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Chicken Focaccella with Honey and Mustard Sauce</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item1"
+                      name="item"
+                      value="coca cola
+
+            33cl, zero Fresh"
+                    />
+                    <label for="item1">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/BWlMkrbajq_owIXAUcBchTg-lDNhSFv4-nV6Vi4_sTI/299x,jpeg/Y2F0YWxvZy9jL2YvYi85L2NmYjkzMGQ4ZDlmMTdjMDQzNGFlNjY4ZGMyY2E4YzFmNGE3YTYzZDZfMzc5NTlfMS5wbmc"
+                        alt="Chicken Pasta"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >coca cola 33cl, zero Fresh</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item2"
+                      name="item"
+                      value="coca cola
+
+            33cl,  Fresh"
+                    />
+                    <label for="item2">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/Oa2jITR9i-ugTcBipp_i0gk7ioGdo1-29PeAeE0DC2g/299x,jpeg/Y2F0YWxvZy85LzUvZS8wLzk1ZTBmYWQwOGYwZTU2YWVlNTI3NjJhMGY0NThlOWU0NjU1MTYxMGNfNjg5Ml8xLnBuZw"
+                        alt="Margherita Pizza"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >coca cola 33cl, Fresh</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item3"
+                      name="item"
+                      value="Nestea Lemon without sugar, 33cl"
+                    />
+                    <label for="item3">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/yw_qZXib4Kj-IkmFCXxET6VTiRqn1P5kTK3Yua1dNak/299x,jpeg/Y2F0YWxvZy8yLzYvYi84LzI2YjgwNGI4OTk4NDFlZTZmMWI3NTNiMDQ2ZjcyNDZlZmJjMzQyYTdfbmVzdGVhc2EuanBn"
+                        alt="Cheeseburger"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Nestea Lemon without sugar, 33cl</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item1"
+                      name="item"
+                      value="Water, 50cl"
+                    />
+                    <label for="item1">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/FEUTKAmmTzenKmAIiErWF7Zx5DRusVfZs1V7K2MzUCE/299x,jpeg/Y2F0YWxvZy9mLzQvMC82L2Y0MDYwMGM0ODI5NjRlYWMyMmU2YTEyODIzMzIxMzczODExZWVhMzlfU29sYW5fNTBjbC5qcGc"
+                        alt="Chicken Pasta"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name">Water, 50cl </span>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item2"
+                      name="item"
+                      value="Ginger Lemonade, 25cl"
+                    />
+                    <label for="item2">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/RaP8ZqVb-SW4I0Eb2_HwNp-J7VaTpjtLN4iXcLXLkg0/299x,jpeg/Y2F0YWxvZy80L2YvNC82LzRmNDY2MDg0N2ZhZTI4MjI1OWZkNDNhMmM3ZTIzNzQ3NTRmODg1ZDJfTElOREFfTElNT04uanBn"
+                        alt="Margherita Pizza"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Ginger Lemonade, 25cl
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item3"
+                      name="item"
+                      value="Chocolate milk"
+                    />
+                    <label for="item3">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/s3-eFGxbfRTwXWOci_EvQGN59oCi9HQMBCKuiN5_rhI/299x,jpeg/Y2F0YWxvZy9kLzUvMy9iL2Q1M2IzYWJjNjk5NzRjMjY4ZDRjZjQ2YWQzY2NjOTMwOGI1YjU1ZTBfM0RfQ2FjYW9sYXRfMF9fR09fUEVUXzIwMF9NTF9fX0xhdF9EX1BhdGluYWRvcmFfYW1wbGlhZGEucG5n"
+                        alt="Cheeseburger"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name">Chocolate milk </span>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item1"
+                      name="item"
+                      value="Organic Tea"
+                    />
+                    <label for="item1">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/LWPq5N7cmJ9OMjeA-HYEJy33Uiat7t6iKh8E04mecKE/299x,jpeg/Y2F0YWxvZy83L2YvZS8yLzdmZTIwNDVmYzVkZmI2OTYyMmExYzY4MjkzNzMzN2JlYzc5MzU4MzNfMTE5NzQxXzEucG5n"
+                        alt="Chicken Pasta"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name">Organic Tea </span>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item2"
+                      name="item"
+                      value="Nescafe Cappuccino"
+                    />
+                    <label for="item2">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/hm3o8qsnfsB1s7EjtoTXqEJ75b1Lo0ZggYK5e83nSX8/299x,jpeg/Y2F0YWxvZy9iL2YvYS9kL2JmYWQ2ZWQ1YmFmYTQyMzZiZDI1YjJmNzQ5ZmFmZDEyYzM0NDA0N2FfNTIxNTdfMS5wbmc"
+                        alt="Margherita Pizza"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Nescafe Cappuccino
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item3"
+                      name="item"
+                      value="Espresso"
+                    />
+                    <label for="item3">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/Xvvyfg_fEW7VLZsmKBmJbXjgGPr8bvGSU74leuZfeR4/299x,jpeg/Y2F0YWxvZy8wLzIvNi9jLzAyNmM1YjA3OWFkOWUyMDcxNTNjYmM5MDExNmFkYWY1N2JmMDJjMmZfMTE1ODAyXzEucG5n"
+                        alt="Cheeseburger"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name">Espresso </span>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item1"
+                      name="item"
+                      value="Traditional waffle"
+                    />
+                    <label for="item1">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/CJd_YDqUZ19rdibAelZa8ZVtOlPucm97HzADBDWkF7M/299x,jpeg/Y2F0YWxvZy9iLzMvYS9mL2IzYWZmYzNjYjM0ZTJhZDBmMGVkMjE5YTZmMWMzNTAyMjRjYWQyNTFfMTIwNTMyXzEucG5n"
+                        alt="Chicken Pasta"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Traditional waffle
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item2"
+                      name="item"
+                      value="Chocolate Muffin"
+                    />
+                    <label for="item2">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/k1FyyLTsJmvLC8_s3Hsh2-EDLe6MqpNRlTwtxUdr2_Q/299x,jpeg/Y2F0YWxvZy83LzIvYS8zLzcyYTNmYTA5NTAxNmYzNjYzY2U0OWU0Mjg5ZmYxZDk4MmYwYTc4NzlfMTIwNjMyXzEucG5n"
+                        alt="Margherita Pizza"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Chocolate Muffin</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item3"
+                      name="item"
+                      value="Pringles 40g"
+                      src="https://images.prod.gate.omnevo.cloud/pim/diWsfuhV-inA75-8Af72U5rOGOzIgB91HsqNOdlfJis/299x,jpeg/Y2F0YWxvZy83LzkvYS85Lzc5YTlkNWEyOWU0Yjc5ZDhmMjU0NzUwNmE3MmQwMzJmNzhkMThjM2VfMTA1NTY5XzEucG5n"
+                    />
+                    <label for="item3">
+                      <img
+                        src="https://images.prod.gate.omnevo.cloud/pim/diWsfuhV-inA75-8Af72U5rOGOzIgB91HsqNOdlfJis/299x,jpeg/Y2F0YWxvZy83LzkvYS85Lzc5YTlkNWEyOWU0Yjc5ZDhmMjU0NzUwNmE3MmQwMzJmNzhkMThjM2VfMTA1NTY5XzEucG5n"
+                        alt="Cheeseburger"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span for="P" class="item-name">Pringles 40g </span>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <div>
+              <input
+                type="submit"
+                value="Submit"
+                name="OK"
+                class="submit-button"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

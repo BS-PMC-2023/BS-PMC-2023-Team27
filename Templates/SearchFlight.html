@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flight Search</title>
+  <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">
+    </script>
+
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">
+    </script>
+
+    <link href=
+"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+     .bpk-nudger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 120px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .bpk-nudgera {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 120px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+
+    .decrease-btn,
+    .increase-btn {
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+     .decrease-btna,
+    .increase-btna {
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .decrease-btn[disabled],
+    .increase-btn[disabled] {
+      cursor: not-allowed;
+    }
+    .decrease-btna[disabled],
+    .increase-btna[disabled] {
+      cursor: not-allowed;
+    }
+
+    .icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: #888;
+    }
+
+    .nudger-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    .nudger-icon--disabled {
+      opacity: 0.5;
+    }
+
+    #adults-input {
+      width: 60px;
+      height: 30px;
+      padding: 5px 10px;
+      font-size: 14px;
+      text-align: center;
+      border: none;
+      background-color: transparent;
+      outline: none;
+      cursor: default;
+    }
+    #adults-inputa {
+      width: 60px;
+      height: 30px;
+      padding: 5px 10px;
+      font-size: 14px;
+      text-align: center;
+      border: none;
+      background-color: transparent;
+      outline: none;
+      cursor: default;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var adultsInput = document.getElementById('adults-input');
+      var increaseBtn = document.querySelector('.increase-btn');
+      var decreaseBtn = document.querySelector('.decrease-btn');
+
+      increaseBtn.addEventListener('click', function() {
+        var currentValue = parseInt(adultsInput.value, 10);
+        if (currentValue < 8) {
+          adultsInput.value = currentValue + 1;
+        }
+
+      });
+
+      decreaseBtn.addEventListener('click', function() {
+        var currentValue = parseInt(adultsInput.value, 10);
+        if (currentValue > 1) {
+          adultsInput.value = currentValue - 1;
+        }
+      });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+      var adultsInput = document.getElementById('adults-inputa');
+      var increaseBtn = document.querySelector('.increase-btna');
+      var decreaseBtn = document.querySelector('.decrease-btna');
+
+      increaseBtn.addEventListener('click', function() {
+        var currentValue = parseInt(adultsInput.value, 10);
+        if (currentValue < 8) {
+          adultsInput.value = currentValue + 1;
+        }
+
+      });
+
+      decreaseBtn.addEventListener('click', function() {
+        var currentValue = parseInt(adultsInput.value, 10);
+        if (currentValue > 0) {
+          adultsInput.value = currentValue - 1;
+        }
+      });
+    });
+    $( function() {
+           var availableTags = [
+               {% for palce in places %}
+                   "{{palce}}",
+           {% endfor %}
+           ];
+        $( "#from" ).autocomplete({
+             source: availableTags
+        });
+        $( "#to" ).autocomplete({
+             source: availableTags
+        });
+        } );
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Flight Search</h1>
+    <form action='airline' method='POST'>
+        {% csrf_token %}
+      <div class="form-group">
+        <label for="from">From:</label>
+        <input type="text" id="from" name="from" placeholder="Enter origin" required>
+      </div>
+      <div class="form-group">
+        <label for="to">To:</label>
+        <input type="text" id="to" name="to" placeholder="Enter destination" required>
+      </div>
+      <div class="form-group">
+        <label for="departure">Departure:</label>
+        <input type="date" id="departure" name="departure" required>
+      </div>
+      <div class="form-group">
+        <label for="return">Return:</label>
+        <input type="date" id="return" name="return" required>
+      </div>
+
+      <div class="BpkPopover_bpk-popover__body--padded__YmVmO"><div>
+      <label class="BpkLabel_bpk-label__YjIxO       CabinClassTravellersSelector_CabinClassTravellersSelector__traveller-label__ZGQ0Y" for="search-controls-cabin-class-dropdown">Cabin class</label>
+      <select class="BpkSelect_bpk-select__YTA2O" aria-invalid="false" id="search-controls-cabin-class-dropdown" name="search-controls-cabin-class-dropdown">
+      <option value="Economy">Economy</option>
+      <option value="PremiumEconomy">Premium economy</option>
+      <option value="Business">Business class</option>
+      <option value="First">First-class</option></select>
+
+      <label for="Adults">Adults (16+ years)</label>
+      <div class="bpk-nudger ">
+    <button type="button" class="decrease-btn" title="Decrease number of adults">
+      <span class="icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nudger-icon">
+          <path d="M1.5 12A1.5 1.5 0 013 10.5h18a1.5 1.5 0 010 3H3A1.5 1.5 0 011.5 12z"></path>
+        </svg>
+      </span>
+    </button>
+    <input type="text" name="adults-input" id="adults-input" value="1">
+    <button type="button" class="increase-btn" title="Increase number of adults">
+      <span class="icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nudger-icon">
+          <path d="M12 1.5A1.5 1.5 0 0010.5 3v7.5H3a1.5 1.5 0 000 3h7.5V21a1.5 1.5 0 003 0v-7.5H21a1.5 1.5 0 000-3h-7.5V3A1.5 1.5 0 0012 1.5z"></path>
+        </svg>
+      </span>
+    </button>
+  </div>
+
+
+      <label for="Adults">Children (0-15 years)</label>
+       <div class="bpk-nudger ">
+    <button type="button" class="decrease-btna" title="Decrease number of adults">
+      <span class="icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nudger-icon">
+          <path d="M1.5 12A1.5 1.5 0 013 10.5h18a1.5 1.5 0 010 3H3A1.5 1.5 0 011.5 12z"></path>
+        </svg>
+      </span>
+    </button>
+    <input type="text" name="adults-inputa" id="adults-inputa" value="1">
+    <button type="button" class="increase-btna" title="Increase number of adults">
+      <span class="icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nudger-icon">
+          <path d="M12 1.5A1.5 1.5 0 0010.5 3v7.5H3a1.5 1.5 0 000 3h7.5V21a1.5 1.5 0 003 0v-7.5H21a1.5 1.5 0 000-3h-7.5V3A1.5 1.5 0 0012 1.5z"></path>
+        </svg>
+      </span>
+    </button>
+  </div>
+
+          <div class="form-group">
+        <input type="submit" value="Search Flights">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

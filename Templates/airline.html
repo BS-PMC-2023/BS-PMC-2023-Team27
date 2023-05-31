@@ -1,11 +1,287 @@
 <!DOCTYPE html>
 <html>
-{% block content %}
-{% for x in data %}
-  {{x}}
-{% endfor %}
-{% endblock content %}
+  <head>
+    <title>Flights</title>
+    <style>
+      .form {
+        width: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-    
+      .form-row {
+        width: 800px;
+        justify-content: center;
+        display: flex;
+        justify-content: space-between;
+      }
 
-</html
+      .form-group {
+        flex-basis: 50%;
+        justify-content: center;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"] {
+        width: 50%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .Bx {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .LegLogo_legImage__MmY0Z img {
+        height: 40px;
+      }
+
+      .By {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 10px;
+      }
+
+      .Bm,
+      .Bn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .Ba {
+        margin: 2px 0;
+      }
+
+      .Bb {
+        font-weight: bold;
+      }
+
+      .Bc {
+        font-size: 12px;
+      }
+
+      .Bd {
+        margin: 0 10px;
+      }
+
+      .Be {
+        fill: #898294;
+        width: 12px;
+        height: 12px;
+      }
+
+      .Bf {
+        display: flex;
+        align-items: center;
+      }
+
+      .Bc.Bj {
+        color: green;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+
+      .Bk {
+        margin-top: 5px;
+      }
+
+      .Bl {
+        font-size: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    {% for user_number ,e in dct.items %}
+
+    <form class="form" method="POST" action="Filght">
+      {% csrf_token %}
+      <div class="form-row">
+        <div class="form-group">
+          <div class="Bx" aria-hidden="true">
+            <div class="LegLogo_legImage__MmY0Z">
+              <div style="height: 0px; padding-bottom: 50%">
+                <img
+                  class="BpkImage_bpk-image__img__MDZkN"
+                  src="{{e.away.imageUrl}}"
+                />
+              </div>
+            </div>
+
+            <div class="By">
+              <div class="Bm">
+                <div>
+                  {{ e.arrivalDateTimeA.hour }}:{{e.arrivalDateTimeA.minute }}
+                </div>
+
+                <div>{{ e.orgin }}</div>
+              </div>
+
+              <div class="LegInfo_stopsContainer__NWIyN">
+                <span class="Ba Bc Duration_duration__NmUyM"
+                  >{{e.durationInMinutesA }} m</span
+                >
+                <div class="Bd">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xml:space="preserve"
+                    viewBox="0 0 12 12"
+                    class="Be"
+                  >
+                    <path
+                      fill="#898294"
+                      d="M3.922 12h.499a.52.52 0 0 0 .444-.247L7.949 6.8l3.233-.019A.8.8 0 0 0 12 6a.8.8 0 0 0-.818-.781L7.949 5.2 4.866.246A.525.525 0 0 0 4.421 0h-.499a.523.523 0 0 0-.489.71L5.149 5.2H2.296l-.664-1.33a.523.523 0 0 0-.436-.288L0 3.509 1.097 6 0 8.491l1.196-.073a.523.523 0 0 0 .436-.288l.664-1.33h2.853l-1.716 4.49a.523.523 0 0 0 .489.71"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="Bf"><span class="Ba Bc Bj">Direct</span>&nbsp;</div>
+              </div>
+
+              <div class="Bn">
+                <span class="Ba BpkText_bpk-text--lg__NjNhN">
+                  <div>
+                    <span name="" class="Ba Bb"
+                      >{{ e.departureDateTimeA.hour
+                      }}:{{e.departureDateTimeA.minute }}</span
+                    >
+                    <div
+                      class="Bk"
+                      tabindex="0"
+                      aria-label="Arrives on Friday, May 26, 2023"
+                    >
+                      <span class="Ba Bl"></span>
+                    </div>
+                  </div>
+                </span>
+                <span
+                  class="Ba BpkText_bpk-text--body-default__Y2M3Z LegInfo_highlight__M2NlM"
+                >
+                  <div
+                    tabindex="0"
+                    aria-label="Istanbul, IST, Türkiye (Turkey)"
+                  >
+                    <span
+                      class="Ba BpkText_bpk-text--body-default__Y2M3Z LegInfo_routePartialCityTooltip__NTE4Z"
+                      >{{ e.destinatio }}</span
+                    >
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="Bx" aria-hidden="true">
+            <div
+              class="LogoImage_container__MDU0Z LegLogo_logoContainer__ODdkM UpperTicketBody_legLogo__ZjYwM"
+            >
+              <div class="LegLogo_legImage__MmY0Z">
+                <div
+                  class="BpkImage_bpk-image__YTkyO BpkImage_bpk-image--no-background__NGMyN"
+                  style="height: 0px; padding-bottom: 50%"
+                >
+                  <img
+                    class="BpkImage_bpk-image__img__MDZkN"
+                    alt="Turkish Airlines"
+                    src="{{"
+                    e.return.imageUrl
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="By">
+              <div class="Bm">
+                <span class="Ba BpkText_bpk-text--lg__NjNhN">
+                  <div>
+                    <span class="Ba Bb"
+                      >{{ e.arrivalDateTimeR.hour }}:{{e.arrivalDateTimeR.minute
+                      }}</span
+                    >
+                  </div>
+                </span>
+                <span class="Ba BpkText_bpk-text--body-default__Y2M3Z">
+                  <div tabindex="0" aria-label="Ben Gurion Intl, TLV, Israel">
+                    <span
+                      class="Ba BpkText_bpk-text--body-default__Y2M3Z LegInfo_routePartialCityTooltip__NTE4Z"
+                      >{{ e.destinatio }}</span
+                    >
+                  </div>
+                </span>
+              </div>
+              <div class="LegInfo_stopsContainer__NWIyN">
+                <span class="Ba Bc Duration_duration__NmUyM"
+                  >{{e.durationInMinutesR }}m</span
+                >
+                <div class="Bd">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xml:space="preserve"
+                    viewBox="0 0 12 12"
+                    class="Be"
+                  >
+                    <path
+                      fill="#898294"
+                      d="M3.922 12h.499a.52.52 0 0 0 .444-.247L7.949 6.8l3.233-.019A.8.8 0 0 0 12 6a.8.8 0 0 0-.818-.781L7.949 5.2 4.866.246A.525.525 0 0 0 4.421 0h-.499a.523.523 0 0 0-.489.71L5.149 5.2H2.296l-.664-1.33a.523.523 0 0 0-.436-.288L0 3.509 1.097 6 0 8.491l1.196-.073a.523.523 0 0 0 .436-.288l.664-1.33h2.853l-1.716 4.49a.523.523 0 0 0 .489.71"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="Bf"><span class="Ba Bc Bj">Direct</span>&nbsp;</div>
+              </div>
+              <div class="Bn">
+                <span class="Ba BpkText_bpk-text--lg__NjNhN">
+                  <div>
+                    <span class="Ba Bb"
+                      >{{ e.departureDateTimeR.hour
+                      }}:{{e.departureDateTimeR.minute }}</span
+                    >
+                    <div
+                      class="Bk"
+                      tabindex="0"
+                      aria-label="Arrives on Friday, May 26, 2023"
+                    >
+                      <span class="Ba Bl"></span>
+                    </div>
+                  </div>
+                </span>
+                <span
+                  class="Ba BpkText_bpk-text--body-default__Y2M3Z LegInfo_highlight__M2NlM"
+                >
+                  <div
+                    tabindex="0"
+                    aria-label="Istanbul, IST, Türkiye (Turkey)"
+                  >
+                    <span
+                      class="Ba BpkText_bpk-text--body-default__Y2M3Z LegInfo_routePartialCityTooltip__NTE4Z"
+                      >{{ e.orgin }}</span
+                    >
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="submit" name="flight" value="{{ e }}">
+          ${{ e.amount }} Buy
+        </button>
+      </div>
+    </form>
+
+    {% endfor %}
+  </body>
+</html>

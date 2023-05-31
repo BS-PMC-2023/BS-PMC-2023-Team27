@@ -37,20 +37,22 @@ urlpatterns = [
     path('workerreport', views.workersReport, name='workerreport'),
     path('viewAllReports', views.viewAllReports, name='viewAllReports'),
     path('EditWorker', views.EditWorker, name='EditWorker'),
-    path('EditWorkerusername/<int:id>', views.EditWorkerusername, name='EditWorkerusername'),
-    path('EditWorkerIDuser/<int:id>', views.EditWorkerIDuser, name='EditWorkerIDuser'),
+    path('EditWorkerusername/<int:id>',views.EditWorkerusername, name='EditWorkerusername'),
+    path('EditWorkerIDuser/<int:id>',views.EditWorkerIDuser, name='EditWorkerIDuser'),
     path('EditWorkerEmail/<int:id>', views.EditWorkerEmail, name='EditWorkerEmail'),
     path('EditWorkermobile/<int:id>', views.EditWorkermobile, name='EditWorkermobile'),
     path('vieworders', views.vieworders, name='vieworders'),
+    path('airline', views.airline, name='airline'),
+    path('SearchFilght', views.SearchFilght, name='SearchFilght'),
+    path('menu', views.menu, name='menu'),
+    path('getorder', views.getorder, name='getorder'),
+    path('Filght', views.Filght, name='Filght'),
 
-    
 
 
 
-    
 
-    
-   
+
 
 
 
