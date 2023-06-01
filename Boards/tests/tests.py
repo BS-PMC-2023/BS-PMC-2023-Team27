@@ -252,3 +252,125 @@ class Test_forms(TestCase):
         self.assertFalse(form1.is_valid())
 
     # def test_Passenger_form(self):
+
+
+@tag('integration-test')
+class Test_integ(TestCase):
+
+    @tag('integration-test')
+    def test_admin_login_and_logout(self):
+        """test_login_and_logout """
+
+        # print(a.username)
+        data = {'username': 'yehia', 'password': '123'}
+        response = self.client.post(reverse('home'), data=data, follow=True)
+        a = self.assertEqual(response.status_code, 200)
+
+        value = 'Login.html'
+        self.assertTrue(response, value)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        # Assert
+        c = self.assertNotEqual(response.status_code, 300)
+        self.assertFalse(response.context["user"].is_authenticated)
+
+    @tag('integration-test')
+    def test_Passenger_login_and_logout(self):
+        """test_login_and_logout """
+
+        # print(a.username)
+        data = {'username': 'ppp', 'password': 'Pp123456789+'}
+        response = self.client.post(reverse('home'), data=data, follow=True)
+        a = self.assertEqual(response.status_code, 200)
+
+        value = 'Login.html'
+        self.assertTrue(response, value)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        # Assert
+        c = self.assertNotEqual(response.status_code, 300)
+        self.assertFalse(response.context["user"].is_authenticated)
+
+    @tag('integration-test')
+    def test_Worker_login_and_logout(self):
+        """test_login_and_logout """
+
+        # print(a.username)
+        data = {'username': 'nnn', 'password': '1234'}
+        response = self.client.post(reverse('home'), data=data, follow=True)
+        a = self.assertEqual(response.status_code, 200)
+
+        value = 'Login.html'
+        self.assertTrue(response, value)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        # Assert
+        c = self.assertNotEqual(response.status_code, 300)
+        self.assertFalse(response.context["user"].is_authenticated)
+
+    @tag('integration-test')
+    def test_add_to_worker_list(self):
+        """"""
+        # accss view
+        response = self.client.get(('login'))
+        a = self.assertTrue(User.is_authenticated)
+
+        response = self.client.get(('SignUpPage'))
+        b = self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(('homePage'))
+        self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        self.assertEqual(response.status_code, 200)
+
+    @tag('integration-test')
+    def test_Passenger_about(self):
+        """"""
+        # accss view
+        response = self.client.get(('login'))
+        a = self.assertTrue(User.is_authenticated)
+
+        response = self.client.get(('aboutus'))
+        b = self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(('homePage'))
+        self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        self.assertEqual(response.status_code, 200)
+
+    @tag('integration-test')
+    def test_Search_f_(self):
+        response = self.client.get(('login'))
+        a = self.assertTrue(User.is_authenticated)
+
+        response = self.client.get(('SearchFilght'))
+        b = self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(('homePage'))
+        self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        self.assertEqual(response.status_code, 200)
+
+    @tag('integration-test')
+    def test_Search_f_(self):
+        response = self.client.get(('login'))
+        a = self.assertTrue(User.is_authenticated)
+
+        response = self.client.get(('menu'))
+        b = self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(('homePage'))
+        self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        self.assertEqual(response.status_code, 200)
