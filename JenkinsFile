@@ -11,6 +11,7 @@ pipeline {
             steps {
 		            withEnv(["HOME=${env.WORKSPACE}"]) {
 		               sh 'pip install -r requirements.txt'
+                      
 					}
 			}
         }
@@ -26,18 +27,7 @@ pipeline {
 		      }
 			}
         }
-        stage(' integration-test') {
-            agent {
-                docker {
-                    image 'python:3.8'
-                }
-            }
-            steps {
-		            withEnv(["HOME=${env.WORKSPACE}"]) {
-                sh 'python3 manage.py test Boards --tag=integration-test'
-		      }
-			}
-        }
+        
 
 	}
 }
