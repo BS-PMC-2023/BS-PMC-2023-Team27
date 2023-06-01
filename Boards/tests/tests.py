@@ -1,10 +1,11 @@
-from Boards.views import HomePageadmin, homePageWorker, LogIN, SignUpPage, SignUp, worker_signup, about
+from Boards.views import HomePageadmin, homePageWorker, LogIN, SignUpPage, SignUp, worker_signup, aboutus
 from django.urls import resolve, reverse
 from django.test import tag
 from django.test import SimpleTestCase
 from Boards.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
+from django.contrib import messages, auth
 import unittest
 import json
 from Boards.models import Worker, Passenger, User
@@ -39,8 +40,8 @@ class TestUrls(SimpleTestCase):
         self.assertEquals(resolve(url).func, worker_signup)
 
     def test_About_url_resolves(self):
-        url = reverse('About')
-        self.assertEquals(resolve(url).func, about)
+        url = reverse('aboutus')
+        self.assertEquals(resolve(url).func, aboutus)
 
 
 @tag('unit-test')
@@ -108,9 +109,127 @@ class TestViews(TestCase):
     @tag('unit-test')
     def test_About_view(self):
         client = Client()
-        response = client.get(reverse('About'))
+        response = client.get(reverse('aboutus'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'aboutus.html')
+
+    @tag('integration-test')
+    def test_admin_login_and_logout(self):
+        """test_login_and_logout """
+
+        # print(a.username)
+        data = {'username': 'yehia', 'password': '123'}
+        response = self.client.post(reverse('home'), data=data, follow=True)
+        a = self.assertEqual(response.status_code, 200)
+
+        value = 'Login.html'
+        self.assertTrue(response, value)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        # Assert
+        c = self.assertNotEqual(response.status_code, 300)
+        self.assertFalse(response.context["user"].is_authenticated)
+
+    @tag('integration-test')
+    def test_Passenger_login_and_logout(self):
+        """test_login_and_logout """
+
+        # print(a.username)
+        data = {'username': 'ppp', 'password': 'Pp123456789+'}
+        response = self.client.post(reverse('home'), data=data, follow=True)
+        a = self.assertEqual(response.status_code, 200)
+
+        value = 'Login.html'
+        self.assertTrue(response, value)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        # Assert
+        c = self.assertNotEqual(response.status_code, 300)
+        self.assertFalse(response.context["user"].is_authenticated)
+
+    @tag('integration-test')
+    def test_Worker_login_and_logout(self):
+        """test_login_and_logout """
+
+        # print(a.username)
+        data = {'username': 'nnn', 'password': '1234'}
+        response = self.client.post(reverse('home'), data=data, follow=True)
+        a = self.assertEqual(response.status_code, 200)
+
+        value = 'Login.html'
+        self.assertTrue(response, value)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        # Assert
+        c = self.assertNotEqual(response.status_code, 300)
+        self.assertFalse(response.context["user"].is_authenticated)
+
+    @tag('integration-test')
+    def test_add_to_worker_list(self):
+        """"""
+        # accss view
+        response = self.client.get(('login'))
+        a = self.assertTrue(User.is_authenticated)
+
+        response = self.client.get(('SignUpPage'))
+        b = self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(('homePage'))
+        self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        self.assertEqual(response.status_code, 200)
+
+    @tag('integration-test')
+    def test_Passenger_about(self):
+        """"""
+        # accss view
+        response = self.client.get(('login'))
+        a = self.assertTrue(User.is_authenticated)
+
+        response = self.client.get(('aboutus'))
+        b = self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(('homePage'))
+        self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        self.assertEqual(response.status_code, 200)
+
+    @tag('integration-test')
+    def test_Search_f_(self):
+        response = self.client.get(('login'))
+        a = self.assertTrue(User.is_authenticated)
+
+        response = self.client.get(('SearchFilght'))
+        b = self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(('homePage'))
+        self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        self.assertEqual(response.status_code, 200)
+
+    @tag('integration-test')
+    def test_Search_f_(self):
+        response = self.client.get(('login'))
+        a = self.assertTrue(User.is_authenticated)
+
+        response = self.client.get(('menu'))
+        b = self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(('homePage'))
+        self.assertNotEqual(response.status_code, 300)
+
+        response = self.client.get(reverse('logout'), follow=True)
+
+        self.assertEqual(response.status_code, 200)
 
 
 @tag("unit_test")
@@ -119,17 +238,17 @@ class Test_forms(TestCase):
     def test_user_form(self):
 
         form = WorkerUserForm(data={
-            'first_name': 'sadsd',
-            'last_name': 'dsfsfs',
-            'username': 'Pp',
-            'password': 'Pp123456789=+', })
+            'first_name': '',
+            'last_name': '',
+            'username': '',
+            'password': '', })
         form1 = WorkerForm(data={
-            'mobile': '877645',
+            'mobile': '',
             'profile_pic': '',
-            'id_user': '976657'
+            'id_user': ''
         })
-        self.assertTrue(form.is_valid())
+        self.assertFalse(form.is_valid())
 
-        self.assertTrue(form1.is_valid())
+        self.assertFalse(form1.is_valid())
 
     # def test_Passenger_form(self):

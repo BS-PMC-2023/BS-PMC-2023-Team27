@@ -83,21 +83,22 @@ def SignUp(request):
 
 
 def LogIN(request):
-    print(request.user.is_authenticated)
+
     if request.user.is_authenticated == False:
         if request.method == "POST":
 
             username = request.POST['username']
             password = request.POST['password']
             user = auth.authenticate(username=username, password=password)
-            if user.is_staff:
-                auth.login(request, user)
-                return redirect('HomePageadmin')
-            elif user is not None and user.groups.filter(name='PASSENGER').exists():
-                auth.login(request, user)
-                return redirect('homePage')
-            elif user is not None and user.groups.filter(name='WORKER').exists():
-                auth.login(request, user)
+            if user is not None:
+                if user.is_staff:
+                    auth.login(request, user)
+                    return redirect('HomePageadmin')
+                elif user is not None and user.groups.filter(name='PASSENGER').exists():
+                    auth.login(request, user)
+                    return redirect('homePage')
+                elif user is not None and user.groups.filter(name='WORKER').exists():
+                    auth.login(request, user)
                 return redirect('homePageWorker')
     else:
         if request.user.is_staff:

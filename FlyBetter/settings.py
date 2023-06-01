@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import sys
 from pathlib import Path
 import os
 
@@ -56,8 +57,8 @@ ROOT_URLCONF = 'FlyBetter.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'Templates')],
-        #'DIRS': [BASE_DIR,'Templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'Templates')],
+        # 'DIRS': [BASE_DIR,'Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,12 +89,13 @@ DATABASES = {
     # }
 
 
-    
+
     'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+
     }
-    
+
 }
 
 
@@ -141,5 +143,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    
+
 ]
