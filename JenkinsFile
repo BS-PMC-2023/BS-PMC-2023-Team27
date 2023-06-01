@@ -53,7 +53,7 @@ pipeline {
 
 					withEnv(["HOME=${env.WORKSPACE}"]) {
 
-						sh "python3 -m coverage run --source 'Boards' manage.py test"
+						sh "python -m coverage run --source 'Boards' manage.py test"
 						sh "python3 -m coverage report --fail-under=50"
 						sh "python3 -m coverage report Boards/tests/tests.py"
 						sh "python3 -m coverage report Boards/models.py"
