@@ -52,6 +52,7 @@ pipeline {
 			steps {
 
 					withEnv(["HOME=${env.WORKSPACE}"]) {
+                        
 
 						sh "python3 -m coverage run --source 'Boards' manage.py test"
 						sh "python3 -m coverage report --fail-under=50"
