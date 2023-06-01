@@ -46,14 +46,14 @@ pipeline {
        stage(' unit test coverage') {
         agent {
                 docker {
-                    image 'python:3.7'
+                    image 'python:3.8'
                 }
             }
 			steps {
 
 					withEnv(["HOME=${env.WORKSPACE}"]) {
 
-						sh "python -m coverage run --source 'Boards' manage.py test"
+						sh "python3 -m coverage run --source 'Boards' manage.py test"
 						sh "python3 -m coverage report --fail-under=50"
 						sh "python3 -m coverage report Boards/tests/tests.py"
 						sh "python3 -m coverage report Boards/models.py"
