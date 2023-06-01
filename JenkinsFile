@@ -22,7 +22,7 @@ pipeline {
             }
             steps {
 		            withEnv(["HOME=${env.WORKSPACE}"]) {
-                sh 'python3 manage.py test Boards --tag=unit-test'
+                sh 'python manage.py test Boards --tag=unit-test'
 		      }
 			}
         }
@@ -34,7 +34,7 @@ pipeline {
             }
             steps {
 		            withEnv(["HOME=${env.WORKSPACE}"]) {
-                sh 'python3 manage.py test Boards --tag=integration-test'
+                sh 'python manage.py test Boards --tag=integration-test'
 		      }
 			}
         }

@@ -8,7 +8,8 @@ from datetime import datetime
 import json
 
 import requests
-import pip._vendor.requests
+# import requests
+# import pip._vendor.requests
 
 from Boards import forms
 
@@ -275,8 +276,6 @@ def getorder(request):
 def airline(request):
     import json
 
-    import requests
-
     url = "https://skyscanner-api.p.rapidapi.com/v3/geo/hierarchy/flights/en-US"
 
     headers = {
@@ -401,8 +400,6 @@ def airline(request):
 
 def SearchFilght(request):
     import json
-
-    import requests
 
     url = "https://skyscanner-api.p.rapidapi.com/v3/geo/hierarchy/flights/en-US"
 

@@ -19,6 +19,7 @@ from django.urls import path
 
 from Boards import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('logout', LogoutView.as_view(next_page='home'), name='logout'),
