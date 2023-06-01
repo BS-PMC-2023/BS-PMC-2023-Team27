@@ -7,9 +7,8 @@ import random
 from datetime import datetime
 import json
 
-import requests
 # import requests
-# import pip._vendor.requests
+
 
 from Boards import forms
 

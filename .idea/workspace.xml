@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ee49dbe4-c865-4510-9c5c-b72bad3fa859" name="Changes" comment="Unit test change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boards/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Boards/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlyBetter/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FlyBetter/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +154,7 @@
       <workItem from="1683127040465" duration="1109000" />
       <workItem from="1683539683741" duration="210000" />
       <workItem from="1685611432531" duration="253000" />
-      <workItem from="1685614351166" duration="578000" />
+      <workItem from="1685614351166" duration="932000" />
     </task>
     <task id="LOCAL‎-00001" summary="BSPMC2327-18 create page to add worker front end">
       <created>1682406068930</created>
