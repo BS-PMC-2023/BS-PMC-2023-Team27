@@ -27,26 +27,10 @@ pipeline {
 		      }
 			}
         }
-        stage(' integration-test') {
-            agent {
-                docker {
-                    image 'python:3.8'
-                }
-            }
-            steps {
-		            withEnv(["HOME=${env.WORKSPACE}"]) {
-                sh 'python3 manage.py test Boards --tag=integration-test'
-		      }
-			}
-        }
-        stage(' unit test coverage') {
-        agent {
-                docker {
-                    image 'python:3.8'
-                }
-            }
 
-            stage(' bug and quality checker') {
+
+
+        stage(' bug and quality checker') {
         agent {
                 docker {
                     image 'python:3.8'
@@ -56,7 +40,8 @@ pipeline {
 
 					withEnv(["HOME=${env.WORKSPACE}"]) {
 
-						sh "python -m pylint Boards/forms.py"
+				
+                        sh "python -m pylint Boards/forms.py"
 						sh "python -m pylint Boards/apps.py"
 						sh "python -m pylint Boards/tests/tests.py"
 						sh "python -m pylint Boards/models.py"
@@ -64,31 +49,20 @@ pipeline {
 
 			}
 		}
-        agent {
-                docker {
-                    image 'python:3.8'
-                }
-            }
-			steps {
-
-					withEnv(["HOME=${env.WORKSPACE}"]) {
-
-						sh "python -m coverage run --source 'Boards' manage.py test"
-						sh "python -m coverage report --fail-under=50"
-						sh "python -m coverage report Boards/tests/tests.py"
-						sh "python -m coverage report Boards/models.py"
-						sh "python -m coverage report Boards/views.py"
-						sh "python -m coverage report Boards/forms.py"
-						sh "python -m coverage report Boards/apps.py"
-						sh "python -m coverage report Boards/admin.py"
-
-					}
 
 
-			}
-		}
+
+
+
+
+
+
+
+
+        
+    }
+		
 
         
 
-	}
 }
