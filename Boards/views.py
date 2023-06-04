@@ -19,6 +19,10 @@ from django.contrib import messages, auth
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from . import models
+from .models import Passenger
+from .models import Worker
+from django.shortcuts import get_object_or_404
+
 
 
 # Create your views here.
@@ -476,3 +480,23 @@ def Filght(request):
         fli.save()
 
     return render(request, 'airline.html')
+def Table_passenger(request):
+    passengers = Passenger.objects.all()
+    return render(request, 'detailspassenger.html', {'passengers': passengers})
+
+def delete_passenger(request,passenger_id):
+    passenger = get_object_or_404(Passenger,id=passenger_id)
+    passenger.user.delete()
+    passenger.delete()
+    return redirect('Table_passenger')
+
+def Table_worker(request):
+    workers = Worker.objects.all()
+    return render(request, 'detailsWorker.html', {'workers': workers})
+
+def delete_worker(request, worker_id):
+    worker = Worker.objects.get(id=worker_id)
+    user = worker.user
+    user.delete()
+    return redirect('Table_worker')
+
