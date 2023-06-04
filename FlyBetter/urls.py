@@ -34,6 +34,13 @@ urlpatterns = [
     path('paypal', views.paypal, name='paypal'),
     path('ContactUs', views.ContactUs, name='ContactUs'),
     path('Contact', views.Contact, name='Contact'),
+
+
+
+
+
+
+    
     path('workerreport', views.workersReport, name='workerreport'),
     path('viewAllReports', views.viewAllReports, name='viewAllReports'),
     path('EditWorker', views.EditWorker, name='EditWorker'),
@@ -55,9 +62,14 @@ urlpatterns = [
 
 
 
-
-
-
-
+    path('workerreport', views.workerreport, name='workerreport'),
+    path('Table_passenger',views.Table_passenger,name='Table_passenger'),
+    path('delete_passenger/<int:passenger_id>/', views.delete_passenger, name='delete_passenger'),
+    path('Table_Worker/', views.Table_worker, name='Table_worker'),
+    path('delete_worker/<int:worker_id>/', views.delete_worker, name='delete_worker'),
 
 ]
+
+
+
+
