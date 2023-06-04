@@ -78,10 +78,10 @@ pipeline {
 
 					withEnv(["HOME=${env.WORKSPACE}"]) {
 
-						sh "python -m pylint Boards/forms.py"
-						sh "python -m pylint Boards/apps.py"
-						sh "python -m pylint Boards/tests/tests.py"
-						sh "python -m pylint Boards/models.py"
+						sh "python3 -m pylint Boards/forms.py"
+						sh "python3 -m pylint Boards/apps.py"
+						sh "python3 -m pylint Boards/tests/tests.py"
+						sh "python3 -m pylint Boards/models.py"
 					}
 
 			}

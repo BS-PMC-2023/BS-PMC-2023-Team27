@@ -7,7 +7,7 @@ import random
 from datetime import datetime
 import json
 
-# import requests
+import requests
 
 
 from Boards import forms
@@ -180,7 +180,7 @@ def workersReport(request):
 
     if request.method == 'POST':
 
-        wo_re = forms.workerreportForm(request.POST)
+        wo_re = forms.WorkerReportForm(request.POST)
         print(wo_re.is_valid())
 
         if wo_re.is_valid():

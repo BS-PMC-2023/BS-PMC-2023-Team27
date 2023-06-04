@@ -11,3 +11,4 @@ sqlparse==0.4.4
 tzdata==2023.3
 coverage==5.5
 pylint
+requests==2.11.1

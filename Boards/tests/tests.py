@@ -1,3 +1,4 @@
+'''TestFile'''
 from Boards.views import HomePageadmin, homePageWorker, LogIN, SignUpPage, SignUp, worker_signup, aboutus
 from django.urls import resolve, reverse
 from django.test import tag
@@ -5,9 +6,8 @@ from django.test import SimpleTestCase
 from Boards.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
-from django.contrib import messages, auth
-import unittest
-import json
+
+
 from Boards.models import Worker, Passenger, User
 from Boards.forms import WorkerUserForm, WorkerForm
 
