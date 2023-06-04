@@ -1,4 +1,4 @@
-from Boards.views import HomePageadmin, homePageWorker, LogIN, SignUpPage, SignUp, worker_signup, about
+from Boards.views import ContactUs, EditWorker, EditWorkerEmail, EditWorkerIDuser, EditWorkermobile, EditWorkerusername, HomePageadmin, aboutus, homePageWorker, LogIN, SignUpPage, SignUp, viewAllReports, worker_signup, about, workersReport
 from django.urls import resolve, reverse
 from django.test import tag
 from django.test import SimpleTestCase
@@ -38,9 +38,43 @@ class TestUrls(SimpleTestCase):
         url = reverse('worker_signup')
         self.assertEquals(resolve(url).func, worker_signup)
 
-    def test_About_url_resolves(self):
-        url = reverse('About')
-        self.assertEquals(resolve(url).func, about)
+    def test_aboutus_url_resolves(self):
+        url = reverse('aboutus')
+        self.assertEquals(resolve(url).func, aboutus)
+    
+    def test_ContactUs_url_resolves(self):
+        url = reverse('ContactUs')
+        self.assertEquals(resolve(url).func, ContactUs)
+    
+    def test_workerreport_url_resolves(self):
+        url = reverse('workerreport')
+        self.assertEquals(resolve(url).func, workersReport)
+    
+    def test_viewAllReports_url_resolves(self):
+        url = reverse('viewAllReports')
+        self.assertEquals(resolve(url).func, viewAllReports)
+    
+    def test_EditWorker_url_resolves(self):
+        url = reverse('EditWorker')
+        self.assertEquals(resolve(url).func, EditWorker)
+    
+    def test_EditWorkerusername_url_resolves(self):
+        url = reverse('EditWorkerusername')
+        self.assertEquals(resolve(url).func, EditWorkerusername)
+    
+    def test_EditWorkerIDuser_url_resolves(self):
+        url = reverse('EditWorkerIDuser')
+        self.assertEquals(resolve(url).func, EditWorkerIDuser)
+    
+    def test_EditWorkerEmail_url_resolves(self):
+        url = reverse('EditWorkerEmail')
+        self.assertEquals(resolve(url).func, EditWorkerEmail)
+    
+    def test_EditWorkermobile_url_resolves(self):
+        url = reverse('EditWorkermobile')
+        self.assertEquals(resolve(url).func, EditWorkermobile)
+
+   
 
 
 @tag('unit-test')
@@ -111,6 +145,72 @@ class TestViews(TestCase):
         response = client.get(reverse('About'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'aboutus.html')
+    
+    @tag('unit-test')
+    def test_ContactUs_view(self):
+        client = Client()
+        response = client.get(reverse('ContactUs'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ContactUs.html')    
+    
+    @tag('unit-test')
+    def test_workerreport_view(self):
+        client = Client()
+        response = client.get(reverse('workerreport'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'workerreport.html')
+    
+    
+    @tag('unit-test')
+    def test_viewAllReports_view(self):
+        client = Client()
+        response = client.get(reverse('viewAllReports'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'viewAllReports.html')
+    
+    
+    @tag('unit-test')
+    def test_EditWorker_view(self):
+        client = Client()
+        response = client.get(reverse('EditWorker'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'EditWorker.html')
+
+    
+    
+    @tag('unit-test')
+    def test_EditWorkerusername_view(self):
+        client = Client()
+        response = client.get(reverse('EditWorkerusername'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'EditWorkerusername.html')
+
+    
+    
+    @tag('unit-test')
+    def test_EditWorkerIDuser_view(self):
+        client = Client()
+        response = client.get(reverse('EditWorkerIDuser'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'EditWorkerIDuser.html')
+    
+    
+    @tag('unit-test')
+    def test_EditWorkerEmail_view(self):
+        client = Client()
+        response = client.get(reverse('EditWorkerEmail'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'EditWorkerEmail.html')
+    
+    
+    @tag('unit-test')
+    def test_EditWorkermobile_view(self):
+        client = Client()
+        response = client.get(reverse('EditWorkermobile'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'EditWorkermobile.html')
+
+
 
 
 @tag("unit_test")
