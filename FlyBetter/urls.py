@@ -37,10 +37,13 @@ urlpatterns = [
     path('workerreport', views.workersReport, name='workerreport'),
     path('viewAllReports', views.viewAllReports, name='viewAllReports'),
     path('EditWorker', views.EditWorker, name='EditWorker'),
-    path('EditWorkerusername/<int:id>',views.EditWorkerusername, name='EditWorkerusername'),
-    path('EditWorkerIDuser/<int:id>',views.EditWorkerIDuser, name='EditWorkerIDuser'),
+    path('EditWorkerusername/<int:id>',
+         views.EditWorkerusername, name='EditWorkerusername'),
+    path('EditWorkerIDuser/<int:id>',
+         views.EditWorkerIDuser, name='EditWorkerIDuser'),
     path('EditWorkerEmail/<int:id>', views.EditWorkerEmail, name='EditWorkerEmail'),
-    path('EditWorkermobile/<int:id>', views.EditWorkermobile, name='EditWorkermobile'),
+    path('EditWorkermobile/<int:id>',
+         views.EditWorkermobile, name='EditWorkermobile'),
     path('vieworders', views.vieworders, name='vieworders'),
     path('airline', views.airline, name='airline'),
     path('SearchFilght', views.SearchFilght, name='SearchFilght'),
@@ -55,9 +58,12 @@ urlpatterns = [
 
 
 
-
-
-
-
+    # path('workerreport', views.workerreport, name='workerreport'),
+    path('Table_passenger', views.Table_passenger, name='Table_passenger'),
+    path('delete_passenger/<int:passenger_id>/',
+         views.delete_passenger, name='delete_passenger'),
+    path('Table_Worker/', views.Table_worker, name='Table_worker'),
+    path('delete_worker/<int:worker_id>/',
+         views.delete_worker, name='delete_worker'),
 
 ]

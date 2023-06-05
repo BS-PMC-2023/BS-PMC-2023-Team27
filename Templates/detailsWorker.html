@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .delete-button,
+      .review-button {
+        padding: 6px 12px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .delete-button:hover,
+      .review-button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>WORKER DETAILS</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+        <th>Action</th>
+      </tr>
+      {% for Worker in workers %}
+      <tr>
+        <td>{{ Worker.id }}</td>
+        <td>{{ Worker.user.first_name }}</td>
+        <td>{{ Worker.user.last_name }}</td>
+        <td>{{ Worker.user.username }}</td>
+        <td>
+          >
+          <form action="{% url 'delete_worker' Worker.id %}" method="POST">
+            {% csrf_token %}
+            <button
+              type="submit"
+              class="delete-button"
+              data-id="{{ Worker.id }}"
+            >
+              Delete
+            </button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+      "
+    >
+      Back to <a href="/HomePageadmin"> Admin Page </a>
+    </div>
+  </body>
+</html>

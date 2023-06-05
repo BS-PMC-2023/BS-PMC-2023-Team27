@@ -89,7 +89,13 @@
 
             <ul class="navbar-list">
               <li>
-                <a href="homePage" class="navbar-link" data-nav-link>home Page</a>
+                <a href="homePage" class="navbar-link" data-nav-link
+                  >home Page</a
+                >
+              </li>
+
+              <li>
+                <a href="menu" class="navbar-link" data-nav-link>Menu</a>
               </li>
 
               <li>
@@ -100,7 +106,8 @@
               </li>
 
               <li>
-                <a href="{% url 'Contact' %}" class="navbar-link" data-nav-link>contact us</a
+                <a href="{% url 'Contact' %}" class="navbar-link" data-nav-link
+                  >contact us</a
                 >
               </li>
               <li>
@@ -112,7 +119,9 @@
             </ul>
           </nav>
 
-          <button class="btn btn-primary">Book Now</button>
+          <a href="{% url 'SearchFilght'   %}">
+            <button class="btn btn-primary">Book Now</button></a
+          >
         </div>
       </div>
     </header>
@@ -130,11 +139,17 @@
             <p class="hero-text">FlyBetter</p>
 
             <div class="btn-group">
+<<<<<<< HEAD
               <a href="{% url 'aboutus'  %}"> <button class="btn btn-primary">Edit</button></a>
 
               <button class="btn btn-primary">Learn more</button>
 
               <button class="btn btn-secondary">Book now</button>
+=======
+              <a href="{% url 'aboutus'  %}">
+                <button class="btn btn-primary">Learn more</button></a
+              >
+>>>>>>> origin/main
             </div>
           </div>
         </section>
@@ -201,7 +216,9 @@
               <p class="section-text"></p>
             </div>
 
-            <button href="ContactUs" class="btn btn-secondary">Contact Us !</button>
+            <a href="{% url 'ContactUs'   %}">
+              <button class="btn btn-primary">Contact Us</button></a
+            >
           </div>
         </section>
       </article>
@@ -249,21 +266,7 @@
           </div>
 
           <div class="footer-form">
-            <p class="form-text">
-              Subscribe our newsletter for more update & news !!
-            </p>
-
-            <form action="" class="form-wrapper">
-              <input
-                type="email"
-                name="email"
-                class="input-field"
-                placeholder="Enter Your Email"
-                required
-              />
-
-              <button type="submit" class="btn btn-secondary">Subscribe</button>
-            </form>
+            <form action="" class="form-wrapper"></form>
           </div>
         </div>
       </div>
