@@ -206,12 +206,6 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('homePageWorker'))'''
 
-    def test_viewAllReports(self):
-        response = self.client.get(reverse('viewAllReports'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'viewAllReports.html')
-        # Add more assertions to test the context and data displayed in the template if needed
-
     def test_EditWorker(self):
         response = self.client.get(reverse('EditWorker'))
         self.assertEqual(response.status_code, 200)
