@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menu</title>
+  <style>
+    body {
+      font-family: "Lexend", Arial, sans-serif;
+      background-color: #f0ffff;
+      padding: 20px 0 40px;
+      margin: 0;
+    }
+    .eate {
+      background-color: #f2f2f2;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    }
+    .eate :hover {
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    .navbar-list {
+      border-top: 1px solid hsla(0, 0%, 0%, 0.1);
+    }
+
+    .navbar-list li {
+      border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+    }
+
+    .navbar-link {
+      padding: 15px 20px;
+      color: var(--jet);
+      font-weight: var(--fw-500);
+      font-size: var(--fs-4);
+      transition: var(--transition);
+      text-transform: capitalize;
+    }
+
+    .menu-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+      background-color: #fff;
+      box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .menu-item {
+      width: 200px;
+      height: 190px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      border: 3px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+    }
+
+    .item-image {
+      width: 90px;
+      height: 110px;
+      margin-right: 5px;
+      border-radius: 10px;
+    }
+
+    .item-details {
+      flex-grow: 1;
+    }
+
+    .item-name {
+      font-weight: bold;
+    }
+
+    .item-price {
+      color: #888;
+    }
+
+    .item-description {
+      margin-top: 10px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 20px;
+    }
+
+    .submit-button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: #555;
+    }
+
+    h2 {
+      color: #111;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    p {
+      color: #111;
+      font-size: 18px;
+      line-height: 27px;
+      text-align: center;
+      margin: 0;
+    }
+
+    a {
+      color: #2a945b;
+      text-decoration: none;
+    }
+
+    .plans-module-main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .my-list {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+    }
+    
+    .my-list li {
+      background-color: #f2f2f2;
+      padding: 10px;
+      margin-right: 5px;
+      border-radius: 5px;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .plans-inner {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+        display: flex;
+        align-items: center;
+      }
+      
+      .header {
+        display: flex;
+        align-items: center;
+      }
+      
+      .cart-icon {
+        position: relative;
+        margin-left: 10px;
+      }
+      
+      .item-count {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: #4CAF50;
+        color: #fff;
+        font-size: 12px;
+        padding: 4px 6px;
+        border-radius: 50%;
+      }
+      
+      .cart-icon img {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+      }
+      </style>
+
+  </style>
+</head>
+
+<body>
+ .
+
+  <body>
+    <form action="getorder" method="POST">
+      {% csrf_token %}
+
+      <div class="plans-module-main">
+        <div class="plans-inner">
+          <div class="menu-container">
+            <h1>Menu</h1>
+            <ul class="my-list">
+                <li>
+                  <a href="{% url 'menu' %}" class="navbar-link" data-nav-link
+                    > All</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'Meals' %}" class="navbar-link" data-nav-link
+                    > Meals</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'Drinks' %}" class="navbar-link" data-nav-link
+                    > Drinks</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'Sweets' %}" class="navbar-link" data-nav-link
+                    > Sweets</a
+                  >
+                </li>
+                <div class="header">
+                
+                    <div class="cart-icon">
+                      <span class="item-count">0</span>
+                      <img src="static/img/trolley.png" alt=" Icon">
+                    </div>
+                  </div>
+                
+               
+              </ul>
+              
+            
+            <table>
+    
+              <tr>
+                <td>
+                  
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item1"
+                      name="item"
+                      value="Traditional waffle"
+                    />
+                    <label for="item1">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/CJd_YDqUZ19rdibAelZa8ZVtOlPucm97HzADBDWkF7M/299x,jpeg/Y2F0YWxvZy9iLzMvYS9mL2IzYWZmYzNjYjM0ZTJhZDBmMGVkMjE5YTZmMWMzNTAyMjRjYWQyNTFfMTIwNTMyXzEucG5n"
+                        alt="Chicken Pasta"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Traditional waffle
+                        </span>
+                        <p>
+                          <span> price :5$</span>
+                          </p>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item2"
+                      name="item"
+                      value="Chocolate Muffin"
+                    />
+                    <label for="item2">
+                      <img
+                        id="s"
+                        src="https://images.prod.gate.omnevo.cloud/pim/k1FyyLTsJmvLC8_s3Hsh2-EDLe6MqpNRlTwtxUdr2_Q/299x,jpeg/Y2F0YWxvZy83LzIvYS8zLzcyYTNmYTA5NTAxNmYzNjYzY2U0OWU0Mjg5ZmYxZDk4MmYwYTc4NzlfMTIwNjMyXzEucG5n"
+                        alt="Margherita Pizza"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span name="de" class="item-name"
+                          >Chocolate Muffin</span
+                        >
+                        <p>
+                          <span> price :6$</span>
+                          </p>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="menu-item">
+                    <input
+                      type="checkbox"
+                      id="item3"
+                      name="item"
+                      value="Pringles 40g"
+                      src="https://images.prod.gate.omnevo.cloud/pim/diWsfuhV-inA75-8Af72U5rOGOzIgB91HsqNOdlfJis/299x,jpeg/Y2F0YWxvZy83LzkvYS85Lzc5YTlkNWEyOWU0Yjc5ZDhmMjU0NzUwNmE3MmQwMzJmNzhkMThjM2VfMTA1NTY5XzEucG5n"
+                    />
+                    <label for="item3">
+                      <img
+                        src="https://images.prod.gate.omnevo.cloud/pim/diWsfuhV-inA75-8Af72U5rOGOzIgB91HsqNOdlfJis/299x,jpeg/Y2F0YWxvZy83LzkvYS85Lzc5YTlkNWEyOWU0Yjc5ZDhmMjU0NzUwNmE3MmQwMzJmNzhkMThjM2VfMTA1NTY5XzEucG5n"
+                        alt="Cheeseburger"
+                        class="item-image"
+                      />
+                      <div class="item-details">
+                        <span for="P" class="item-name">Pringles 40g </span>
+                        <p>
+                          <span> price :5$</span>
+                          </p>
+                      </div>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <div>
+              <input
+                type="submit"
+                value="Submit"
+                name="OK"
+                class="submit-button"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

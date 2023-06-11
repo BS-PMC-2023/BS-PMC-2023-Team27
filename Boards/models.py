@@ -1,15 +1,19 @@
+'''Models'''
 from django.db import models
-from django.db import models
+
 from django.contrib.auth.models import User
 # Create your models here.
 
 
 class Passenger(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    '''Passenger'''
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, null=True, blank=True)
     id_user_P = models.IntegerField()
 
 
 class Worker(models.Model):
+    '''Worker'''
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     id_user = models.IntegerField()
     profile_pic = models.ImageField(
@@ -17,31 +21,30 @@ class Worker(models.Model):
     mobile = models.CharField(max_length=20, null=False)
     email = models.EmailField(null=False, default="")
 
-    @property
-    def get_name(self):
-        return self.user.first_name + " " + self.user.last_name
-
-    @property
-    def get_instance(self):
-        return self
-
-    def __str__(self):
-        return self.user.first_name
-
 
 class ContactUs(models.Model):
+    '''ContactUs'''
     email = models.EmailField(null=False)
     subject = models.CharField(max_length=50, null=False)
     Discrbition = models.TextField()
 
 
-class workerreport(models.Model):
+class Workerreport(models.Model):
+    '''workerreport'''
+    email = models.EmailField(null=False)
+    phonenumber = models.CharField(max_length=50, null=False)
+    Discrbition = models.TextField()
+
+
+class Report(models.Model):
+    '''report'''
     email = models.EmailField(null=False)
     phonenumber = models.CharField(max_length=50, null=False)
     Discrbition = models.TextField()
 
 
 class Flight(models.Model):
+    '''Flight'''
 
     amount = models.IntegerField()
     arrivalDateTimeAway = models.DateTimeField()
@@ -57,4 +60,5 @@ class Flight(models.Model):
 
 
 class Order(models.Model):
+    '''Order'''
     name = models.CharField(max_length=1000)

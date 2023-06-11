@@ -1,132 +1,205 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Menu</title>
-    <style>
-      body {
-        font-family: "Lexend", Arial, sans-serif;
-        background-color: #f0ffff;
-        padding: 20px 0 40px;
-        margin: 0;
-      }
-      .menu-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0px;
-        background-color: #fff;
-        box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
-      }
+<head>
+  <title>Menu</title>
+  <style>
+    body {
+      font-family: "Lexend", Arial, sans-serif;
+      background-color: #f0ffff;
+      padding: 20px 0 40px;
+      margin: 0;
+    }
+    .eate {
+      background-color: #f2f2f2;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    }
+    .eate :hover {
+      background-color: #ddd;
+      cursor: pointer;
+    }
 
-      h1 {
-        text-align: center;
-        color: #333;
-      }
+    .navbar-list {
+      border-top: 1px solid hsla(0, 0%, 0%, 0.1);
+    }
 
-      .menu-item {
-        width: 200px;
-        height: 190px;
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-        border: 3px solid #ccc;
-        border-radius: 5px;
-        padding: 15px;
-      }
+    .navbar-list li {
+      border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+    }
 
-      .item-image {
-        width: 90px;
-        height: 110px;
+    .navbar-link {
+      padding: 15px 20px;
+      color: var(--jet);
+      font-weight: var(--fw-500);
+      font-size: var(--fs-4);
+      transition: var(--transition);
+      text-transform: capitalize;
+    }
 
-        margin-right: 5px;
-        border-radius: 10px;
-      }
+    .menu-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+      background-color: #fff;
+      box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+    }
 
-      .item-details {
-        flex-grow: 1;
-      }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
 
-      .item-name {
-        font-weight: bold;
-      }
+    .menu-item {
+      width: 200px;
+      height: 190px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      border: 3px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+    }
 
-      .item-price {
-        color: #888;
-      }
+    .item-image {
+      width: 90px;
+      height: 110px;
+      margin-right: 5px;
+      border-radius: 10px;
+    }
 
-      .item-description {
-        margin-top: 10px;
-      }
+    .item-details {
+      flex-grow: 1;
+    }
 
-      input[type="checkbox"] {
-        margin-right: 20px;
-      }
+    .item-name {
+      font-weight: bold;
+    }
 
-      .submit-button {
-        display: block;
-        margin: 20px auto;
-        padding: 10px 20px;
-        background-color: #333;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-      }
+    .item-price {
+      color: #888;
+    }
 
-      .submit-button:hover {
-        background-color: #555;
-      }
+    .item-description {
+      margin-top: 10px;
+    }
 
-      h2 {
-        color: #111;
-        font-size: 24px;
-        font-weight: bold;
-        text-align: center;
-      }
+    input[type="checkbox"] {
+      margin-right: 20px;
+    }
 
-      p {
-        color: #111;
-        font-size: 18px;
-        line-height: 27px;
-        text-align: center;
-        margin: 0;
-      }
+    .submit-button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-      a {
-        color: #2a945b;
-        text-decoration: none;
-      }
+    .submit-button:hover {
+      background-color: #555;
+    }
 
-      .plans-module-main {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-      }
+    h2 {
+      color: #111;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
 
-      .plans-inner {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 20px;
-        max-width: 800px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 40px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      }
-    </style>
-  </head>
+    p {
+      color: #111;
+      font-size: 18px;
+      line-height: 27px;
+      text-align: center;
+      margin: 0;
+    }
+
+    a {
+      color: #2a945b;
+      text-decoration: none;
+    }
+
+    .plans-module-main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .my-list {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+    }
+    
+    .my-list li {
+      background-color: #f2f2f2;
+      padding: 10px;
+      margin-right: 5px;
+      border-radius: 5px;
+    }
+    
+
+    .plans-inner {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+ .
 
   <body>
-    <form action="getorder" method="POST">
+    <form action="Buying" method="POST">
       {% csrf_token %}
 
       <div class="plans-module-main">
         <div class="plans-inner">
           <div class="menu-container">
             <h1>Menu</h1>
+            <ul class="my-list">
+              <li>
+                <a href="{% url 'menu' %}" class="navbar-link" data-nav-link
+                  > All</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'Meals' %}" class="navbar-link" data-nav-link
+                  > Meals</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'Drinks' %}" class="navbar-link" data-nav-link
+                  > Drinks</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'Sweets' %}" class="navbar-link" data-nav-link
+                  > Sweets</a
+                >
+              </li>
+             
+            </ul>
+            
             <table>
               <tr>
                 <td>
@@ -148,6 +221,9 @@
                         <span name="de" class="item-name"
                           >Breakfast Deal: Chocolate Muffin + Cappuccino</span
                         >
+                        <p>
+                        <span> price :9$</span>
+                        </p>
                       </div>
                     </label>
                   </div>
@@ -172,6 +248,9 @@
                           >Breakfast Deal: Chocolate Muffin + Espresso
                           illy</span
                         >
+                        <p>
+                          <span> price :10$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -194,6 +273,9 @@
                         <span name="de" class="item-name"
                           >Meal Deal: Lasagna Bolognese + Soft Drink</span
                         >
+                        <p>
+                          <span> price :11$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -218,8 +300,11 @@
                       />
                       <div class="item-details">
                         <span name="de" class="item-name"
-                          >Chicken rice + Soft Drink</span
-                        >
+                          >Chicken rice + Soft Drink</span>
+                          <p>
+                            <span> price :15$</span>
+                            </p>
+                        
                       </div>
                     </label>
                   </div>
@@ -244,6 +329,9 @@
                         <span name="de" class="item-name"
                           >Rice With Chicken And Vegetables
                         </span>
+                        <p>
+                          <span> price :13$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -266,6 +354,9 @@
                       <div class="item-details">
                         <span name="de" class="item-name">Cheeseburger </span>
                       </div>
+                      <p>
+                        <span> price :16$</span>
+                        </p>
                     </label>
                   </div>
                 </td>
@@ -291,6 +382,9 @@
                         <span name="de" class="item-name"
                           >Alfredo Pasta with Mushrooms, 320g</span
                         >
+                        <p>
+                          <span> price :11$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -314,6 +408,9 @@
                         <span name="de" class="item-name"
                           >Iberian ham sandwich with EVOO</span
                         >
+                        <p>
+                          <span> price :13$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -337,6 +434,9 @@
                         <span name="de" class="item-name"
                           >Chicken Focaccella with Honey and Mustard Sauce</span
                         >
+                        <p>
+                          <span> price :12$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -345,6 +445,7 @@
 
               <tr>
                 <td>
+                
                   <div class="menu-item">
                     <input
                       type="checkbox"
@@ -365,6 +466,9 @@
                         <span name="de" class="item-name"
                           >coca cola 33cl, zero Fresh</span
                         >
+                        <p>
+                          <span> price :3$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -391,6 +495,9 @@
                           >coca cola 33cl, Fresh</span
                         >
                       </div>
+                      <p>
+                        <span> price :4$</span>
+                        </p>
                     </label>
                   </div>
                 </td>
@@ -413,6 +520,9 @@
                         <span name="de" class="item-name"
                           >Nestea Lemon without sugar, 33cl</span
                         >
+                        <p>
+                          <span> price :5$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -437,6 +547,9 @@
                       />
                       <div class="item-details">
                         <span name="de" class="item-name">Water, 50cl </span>
+                        <p>
+                          <span> price :2$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -461,6 +574,9 @@
                         <span name="de" class="item-name"
                           >Ginger Lemonade, 25cl
                         </span>
+                        <p>
+                          <span> price :6$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -484,6 +600,9 @@
                       <div class="item-details">
                         <span name="de" class="item-name">Chocolate milk </span>
                       </div>
+                      <p>
+                        <span> price :3$</span>
+                        </p>
                     </label>
                   </div>
                 </td>
@@ -507,6 +626,9 @@
                       />
                       <div class="item-details">
                         <span name="de" class="item-name">Organic Tea </span>
+                        <p>
+                          <span> price :1$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -531,6 +653,9 @@
                         <span name="de" class="item-name"
                           >Nescafe Cappuccino
                         </span>
+                        <p>
+                          <span> price :4$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -553,6 +678,9 @@
                       />
                       <div class="item-details">
                         <span name="de" class="item-name">Espresso </span>
+                        <p>
+                          <span> price :3$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -561,6 +689,7 @@
 
               <tr>
                 <td>
+                  
                   <div class="menu-item">
                     <input
                       type="checkbox"
@@ -579,6 +708,9 @@
                         <span name="de" class="item-name"
                           >Traditional waffle
                         </span>
+                        <p>
+                          <span> price :5$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -603,6 +735,9 @@
                         <span name="de" class="item-name"
                           >Chocolate Muffin</span
                         >
+                        <p>
+                          <span> price :6$</span>
+                          </p>
                       </div>
                     </label>
                   </div>
@@ -625,6 +760,9 @@
                       />
                       <div class="item-details">
                         <span for="P" class="item-name">Pringles 40g </span>
+                        <p>
+                          <span> price :5$</span>
+                          </p>
                       </div>
                     </label>
                   </div>

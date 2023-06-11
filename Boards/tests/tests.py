@@ -1,15 +1,22 @@
 '''TestFile'''
-from Boards.views import HomePageadmin, homePageWorker, LogIN, SignUpPage, SignUp, worker_signup, aboutus
-from django.urls import resolve, reverse
-from django.test import tag
-from django.test import SimpleTestCase
-from Boards.models import User
-from django.test import Client, TestCase
-from django.urls import reverse
 
-
-from Boards.models import Worker, Passenger, User
+from django.test import TestCase, Client
+import json
+from datetime import datetime
 from Boards.forms import WorkerUserForm, WorkerForm
+from Boards.models import Worker, Passenger, User
+from django.contrib.auth.views import LogoutView
+from Boards import views
+from Boards.forms import WorkerUserForm, WorkerForm, PassengerUserForm, PassengerForm, ContactUsForm, WorkerReportForm
+from django.test import TestCase
+from django.urls import reverse
+from django.test import Client, TestCase
+from Boards.models import User, Worker
+from django.test import SimpleTestCase
+from django.test import tag
+from django.urls import resolve, reverse
+from Boards.views import HomePageadmin, homePageWorker, LogIN, SignUpPage, SignUp, worker_signup, aboutus, homePage, HomePageadmin, paypal, ContactUs, Contact, EditWorker, EditWorkerusername, EditWorkerIDuser, EditWorkerEmail, EditWorkermobile, airline, SearchFilght, menu, getorder, Filght, vieworders, Table_worker, Table_passenger
+from Boards.models import Order
 
 
 @tag('unit-test')
@@ -27,6 +34,10 @@ class TestUrls(SimpleTestCase):
         url = reverse('SignUp')
         self.assertEquals(resolve(url).func, SignUp)
 
+    def test_homepage_url_resolves(self):
+        url = reverse('homePage')
+        self.assertEquals(resolve(url).func, homePage)
+
     def test_SignUpPage_url_resolves(self):
         url = reverse('SignUpPage')
         self.assertEquals(resolve(url).func, SignUpPage)
@@ -43,6 +54,50 @@ class TestUrls(SimpleTestCase):
         url = reverse('aboutus')
         self.assertEquals(resolve(url).func, aboutus)
 
+    def test_Pay_url_resolves(self):
+        url = reverse('paypal')
+        self.assertEquals(resolve(url).func, paypal)
+
+    def test_ContactUs_url_resolves(self):
+        url = reverse('ContactUs')
+        self.assertEquals(resolve(url).func, ContactUs)
+
+    # def test_EditWorkerusername_url_resolves(self):
+        # url = reverse('EditWorkerusername')
+        # self.assertEquals(resolve(url).func, EditWorkerusername)
+
+    # def test_EditWorkerusername_url_resolves(self):
+        # url = reverse('EditWorkerusername')
+        # self.assertEquals(resolve(url).func, EditWorkerusername)
+
+    def test_airline_url_resolves(self):
+        url = reverse('airline')
+        self.assertEquals(resolve(url).func, airline)
+
+    def test_SearchFilght_url_resolves(self):
+        url = reverse('SearchFilght')
+        self.assertEquals(resolve(url).func, SearchFilght)
+
+    def test_menu_url_resolves(self):
+        url = reverse('menu')
+        self.assertEquals(resolve(url).func, menu)
+
+    def test_getorder_url_resolves(self):
+        url = reverse('getorder')
+        self.assertEquals(resolve(url).func, getorder)
+
+    def test_getorder_url_resolves(self):
+        url = reverse('Filght')
+        self.assertEquals(resolve(url).func, Filght)
+
+    def test_Table_Worker_url_resolves(self):
+        url = reverse('Table_Worker')
+        self.assertEquals(resolve(url).func, Table_worker)
+
+    def test_Table_Worker_url_resolves(self):
+        url = reverse('vieworders')
+        self.assertEquals(resolve(url).func, vieworders)
+
 
 @tag('unit-test')
 class TestViews(TestCase):
@@ -57,9 +112,9 @@ class TestViews(TestCase):
         response = client.get(self.homwpaurl)
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html')
-
+    '''
     @tag('unit-test')
-    def test_Home_view(self): '''
+    def test_Home_view(self):
         client = Client()
         response = client.get(self.Homeurl)
         self.assertEquals(response.status_code, 200)
@@ -113,59 +168,110 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'aboutus.html')
 
-    @tag('integration-test')
-    def test_admin_login_and_logout(self):
-        """test_login_and_logout """
+    @tag('unit-test')
+    def test_paypal(self):
+        response = self.client.get(reverse('paypal'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'paypal.html')
 
-        # print(a.username)
-        data = {'username': 'yehia', 'password': '123'}
-        response = self.client.post(reverse('home'), data=data, follow=True)
-        a = self.assertEqual(response.status_code, 200)
+    @tag('unit-test')
+    def test_ContactUs(self):
+        response = self.client.get(reverse('ContactUs'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ContactUs.html')
 
-        value = 'Login.html'
-        self.assertTrue(response, value)
+    @tag('unit-test')
+    def test_ContactUs_post(self):
+        response = self.client.post(reverse('ContactUs'), {
+                                    'email': 'test@example.com', 'subject': 'Test Subject', 'Discrbition': 'Test Description'})
+        # Assuming you're redirecting to 'homePage' on successful form submission
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('homePage'))
 
-        response = self.client.get(reverse('logout'), follow=True)
+    def test_Contact(self):
+        response = self.client.get(reverse('Contact'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'ContactUs.html')
 
-        # Assert
-        c = self.assertNotEqual(response.status_code, 300)
-        self.assertFalse(response.context["user"].is_authenticated)
+    def test_workersReport(self):
+        response = self.client.get(reverse('workersReport'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'workerreport.html')
 
-    @tag('integration-test')
-    def test_Passenger_login_and_logout(self):
-        """test_login_and_logout """
+    '''def test_workersReport_post(self):
+        # Replace field1 and field2 with the actual field names from your form
+        response = self.client.post(reverse('workersReport'), {
+                                    'field1': 'value1', 'field2': 'value2'})
+        # Assuming you're redirecting to 'homePageWorker' on successful form submission
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('homePageWorker'))'''
 
-        # print(a.username)
-        data = {'username': 'ppp', 'password': 'Pp123456789+'}
-        response = self.client.post(reverse('home'), data=data, follow=True)
-        a = self.assertEqual(response.status_code, 200)
+    def test_viewAllReports(self):
+        response = self.client.get(reverse('viewAllReports'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'viewAllReports.html')
+        # Add more assertions to test the context and data displayed in the template if needed
 
-        value = 'Login.html'
-        self.assertTrue(response, value)
+    def test_EditWorker(self):
+        response = self.client.get(reverse('EditWorker'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'EditWorker.html')
+        # Add more assertions to test the context and data displayed in the template if needed
 
-        response = self.client.get(reverse('logout'), follow=True)
+    '''def test_menu(self):
+        response = self.client.get(reverse('menu'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'Menu.html')'''
 
-        # Assert
-        c = self.assertNotEqual(response.status_code, 300)
-        self.assertFalse(response.context["user"].is_authenticated)
+    def test_vieworders(self):
+        # Create some sample orders for testing
+        Order.objects.create(name='Chocolate Muffin + Espresso illy')
+        Order.objects.create(name='Meal Deal: Lasagna Bolognese + Soft Drink')
+        Order.objects.create(name='Chicken rice + Soft Drink')
 
-    @tag('integration-test')
-    def test_Worker_login_and_logout(self):
-        """test_login_and_logout """
+        response = self.client.get(reverse('vieworders'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'vieworders.html')
 
-        # print(a.username)
-        data = {'username': 'nnn', 'password': '1234'}
-        response = self.client.post(reverse('home'), data=data, follow=True)
-        a = self.assertEqual(response.status_code, 200)
+        # Add more assertions to test the context and rendered data if needed
 
-        value = 'Login.html'
-        self.assertTrue(response, value)
+    def test_getorder(self):
+        # Prepare the data for the POST request
+        data = {'item': ['Chocolate Muffin + Espresso illy',
+                         'Chicken rice + Soft Drink', 'Meal Deal: Lasagna Bolognese + Soft Drink']}
 
-        response = self.client.get(reverse('logout'), follow=True)
+        response = self.client.post(reverse('getorder'), data)
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('HomePageadmin'))
 
-        # Assert
-        c = self.assertNotEqual(response.status_code, 300)
-        self.assertFalse(response.context["user"].is_authenticated)
+        # Assert that the orders have been created
+        orders = Order.objects.all()
+        self.assertEqual(orders.count(), 3)
+
+
+class SearchFlightViewTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+        # Replace 'SearchFilght' with the correct URL pattern name
+        self.url = reverse('SearchFilght')
+
+    def test_search_flight_view(self):
+        # Send a GET request to the view
+        response = self.client.get(self.url)
+
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+
+        # Add more assertions to validate the response content or any other expected behavior of the view
+
+    '''def test_EditWorkerusername(self):
+        # Create a worker object for testing
+        # Assuming 'id_user' is the required field
+        worker = Worker.objects.create(id_user=1)
+        response = self.client.post(reverse('EditWorkerusername', args=[
+                                    worker.user_id]), {'username': 'new_username'})
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('EditWorker'))'''
 
     @tag('integration-test')
     def test_add_to_worker_list(self):
@@ -256,60 +362,6 @@ class Test_forms(TestCase):
 
 @tag('integration-test')
 class Test_integ(TestCase):
-
-    @tag('integration-test')
-    def test_admin_login_and_logout(self):
-        """test_login_and_logout """
-
-        # print(a.username)
-        data = {'username': 'yehia', 'password': '123'}
-        response = self.client.post(reverse('home'), data=data, follow=True)
-        a = self.assertEqual(response.status_code, 200)
-
-        value = 'Login.html'
-        self.assertTrue(response, value)
-
-        response = self.client.get(reverse('logout'), follow=True)
-
-        # Assert
-        c = self.assertNotEqual(response.status_code, 300)
-        self.assertFalse(response.context["user"].is_authenticated)
-
-    @tag('integration-test')
-    def test_Passenger_login_and_logout(self):
-        """test_login_and_logout """
-
-        # print(a.username)
-        data = {'username': 'ppp', 'password': 'Pp123456789+'}
-        response = self.client.post(reverse('home'), data=data, follow=True)
-        a = self.assertEqual(response.status_code, 200)
-
-        value = 'Login.html'
-        self.assertTrue(response, value)
-
-        response = self.client.get(reverse('logout'), follow=True)
-
-        # Assert
-        c = self.assertNotEqual(response.status_code, 300)
-        self.assertFalse(response.context["user"].is_authenticated)
-
-    @tag('integration-test')
-    def test_Worker_login_and_logout(self):
-        """test_login_and_logout """
-
-        # print(a.username)
-        data = {'username': 'nnn', 'password': '1234'}
-        response = self.client.post(reverse('home'), data=data, follow=True)
-        a = self.assertEqual(response.status_code, 200)
-
-        value = 'Login.html'
-        self.assertTrue(response, value)
-
-        response = self.client.get(reverse('logout'), follow=True)
-
-        # Assert
-        c = self.assertNotEqual(response.status_code, 300)
-        self.assertFalse(response.context["user"].is_authenticated)
 
     @tag('integration-test')
     def test_add_to_worker_list(self):

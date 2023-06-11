@@ -45,21 +45,20 @@ urlpatterns = [
     path('EditWorkerEmail/<int:id>', views.EditWorkerEmail, name='EditWorkerEmail'),
     path('EditWorkermobile/<int:id>',
          views.EditWorkermobile, name='EditWorkermobile'),
+    path('vieworders', views.vieworders, name='vieworders'),
     path('airline', views.airline, name='airline'),
     path('SearchFilght', views.SearchFilght, name='SearchFilght'),
     path('menu', views.menu, name='menu'),
     path('getorder', views.getorder, name='getorder'),
     path('Filght', views.Filght, name='Filght'),
 
-
-
-
-
-
-
-
-
-
+    path('Table_passenger', views.Table_passenger, name='Table_passenger'),
+    path('delete_passenger/<int:passenger_id>/',
+         views.delete_passenger, name='delete_passenger'),
+    path('Table_Worker/', views.Table_worker, name='Table_worker'),
+    path('delete_worker/<int:worker_id>/',
+         views.delete_worker, name='delete_worker'),
+    path('workersReport', views.workersReport, name='workersReport'),
 
 
 

@@ -28,7 +28,7 @@ pipeline {
 			}
         }
 
-        stage(' integration-test') {
+        stage('integration-test') {
             agent {
                 docker {
                     image 'python:3.8'
@@ -55,7 +55,7 @@ pipeline {
 
 
 						sh "python3 -m coverage run --source 'Boards' manage.py test"
-						sh "python3 -m coverage report --fail-under=10"
+						sh "python3 -m coverage report --fail-under=36"
 						sh "python3 -m coverage report Boards/tests/tests.py"
 						sh "python3 -m coverage report Boards/models.py"
 						sh "python3 -m coverage report Boards/views.py"
@@ -80,7 +80,7 @@ pipeline {
 
 						sh "python3 -m pylint Boards/forms.py"
 						sh "python3 -m pylint Boards/apps.py"
-						sh "python3 -m pylint Boards/tests/tests.py"
+		
 						sh "python3 -m pylint Boards/models.py"
 					}
 

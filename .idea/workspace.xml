@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee49dbe4-c865-4510-9c5c-b72bad3fa859" name="Changes" comment="Unit test change" />
+    <list default="true" id="ee49dbe4-c865-4510-9c5c-b72bad3fa859" name="Changes" comment="Unit test change">
+      <change afterPath="$PROJECT_DIR$/static/img/icons8-email-48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/trolley.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.coverage" beforeDir="false" afterPath="$PROJECT_DIR$/.coverage" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Boards/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Boards/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Boards/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Boards/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Boards/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Boards/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Boards/tests/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/Boards/tests/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Boards/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Boards/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlyBetter/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FlyBetter/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JenkinsFile" beforeDir="false" afterPath="$PROJECT_DIR$/JenkinsFile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/HomePageadmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/HomePageadmin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/Menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/Menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

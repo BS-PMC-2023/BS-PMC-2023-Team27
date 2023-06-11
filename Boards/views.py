@@ -8,7 +8,7 @@ from datetime import datetime
 import json
 
 import requests
-
+import pip._vendor.requests
 
 from Boards import forms
 
@@ -19,6 +19,9 @@ from django.contrib import messages, auth
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from . import models
+from .models import Passenger
+from .models import Worker
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -83,22 +86,21 @@ def SignUp(request):
 
 
 def LogIN(request):
-
+    print(request.user.is_authenticated)
     if request.user.is_authenticated == False:
         if request.method == "POST":
 
             username = request.POST['username']
             password = request.POST['password']
             user = auth.authenticate(username=username, password=password)
-            if user is not None:
-                if user.is_staff:
-                    auth.login(request, user)
-                    return redirect('HomePageadmin')
-                elif user is not None and user.groups.filter(name='PASSENGER').exists():
-                    auth.login(request, user)
-                    return redirect('homePage')
-                elif user is not None and user.groups.filter(name='WORKER').exists():
-                    auth.login(request, user)
+            if user.is_staff:
+                auth.login(request, user)
+                return redirect('HomePageadmin')
+            elif user is not None and user.groups.filter(name='PASSENGER').exists():
+                auth.login(request, user)
+                return redirect('homePage')
+            elif user is not None and user.groups.filter(name='WORKER').exists():
+                auth.login(request, user)
                 return redirect('homePageWorker')
     else:
         if request.user.is_staff:
@@ -180,7 +182,7 @@ def workersReport(request):
 
     if request.method == 'POST':
 
-        wo_re = forms.WorkerReportForm(request.POST)
+        wo_re = forms.workerreportForm(request.POST)
         print(wo_re.is_valid())
 
         if wo_re.is_valid():
@@ -255,6 +257,14 @@ def EditWorkermobile(request, id):
     return render(request, 'EditWorkermobile.html')
 
 
+def vieworders(request):
+    context = {}
+    if request.method == 'GET':
+        result = models.Order.objects.all()
+        context = {"result": result}
+    return render(request, 'vieworders.html', context=context)
+
+
 def menu(request):
     return render(request, 'Menu.html')
 
@@ -274,6 +284,8 @@ def getorder(request):
 
 def airline(request):
     import json
+
+    import requests
 
     url = "https://skyscanner-api.p.rapidapi.com/v3/geo/hierarchy/flights/en-US"
 
@@ -400,6 +412,8 @@ def airline(request):
 def SearchFilght(request):
     import json
 
+    import requests
+
     url = "https://skyscanner-api.p.rapidapi.com/v3/geo/hierarchy/flights/en-US"
 
     headers = {
@@ -464,5 +478,30 @@ def Filght(request):
                                     durationInMinutesR=durationInMinutesR,
                                     returnf=res['destinatio'], returnimg=imgare)
         fli.save()
+        return render(request, 'paypal.html')
 
     return render(request, 'airline.html')
+
+
+def Table_passenger(request):
+    passengers = Passenger.objects.all()
+    return render(request, 'detailspassenger.html', {'passengers': passengers})
+
+
+def delete_passenger(request, passenger_id):
+    passenger = get_object_or_404(Passenger, id=passenger_id)
+    passenger.user.delete()
+    passenger.delete()
+    return redirect('Table_passenger')
+
+
+def Table_worker(request):
+    workers = Worker.objects.all()
+    return render(request, 'detailsWorker.html', {'workers': workers})
+
+
+def delete_worker(request, worker_id):
+    worker = Worker.objects.get(id=worker_id)
+    user = worker.user
+    user.delete()
+    return redirect('Table_worker')

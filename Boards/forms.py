@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-import models
+from .models import Passenger, Worker, ContactUs, Workerreport
 
 
 class WorkerUserForm(forms.ModelForm):
@@ -16,7 +16,7 @@ class WorkerUserForm(forms.ModelForm):
         def pub2(self):
             """pub2 """
 
-        model = models.User
+        model = User
         fields = ['first_name', 'last_name', 'username', 'password']
         widgets = {
             'password': forms.PasswordInput()
@@ -34,7 +34,7 @@ class WorkerForm(forms.ModelForm):
         def pub2(self):
             """pub2 """
 
-        model = models.Worker
+        model = Worker
         fields = ['mobile', 'profile_pic', 'id_user', 'email']
 
 
@@ -67,7 +67,7 @@ class PassengerForm(forms.ModelForm):
         def pub2(self):
             """pub2 """
 
-        model = models.Passenger
+        model = Passenger
         fields = ['id_user_P']
 
 
@@ -82,7 +82,7 @@ class ContactUsForm(forms.ModelForm):
         def pub2(self):
             """pub2 """
 
-        model = models.ContactUs
+        model = ContactUs
         fields = ['email', 'subject', 'Discrbition']
 
 
@@ -97,5 +97,5 @@ class WorkerReportForm(forms.ModelForm):
         def pub2(self):
             """pub2 """
 
-        model = models.workerreport
+        model = Workerreport
         fields = ['email', 'phonenumber', 'Discrbition']

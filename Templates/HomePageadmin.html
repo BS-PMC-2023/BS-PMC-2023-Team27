@@ -32,10 +32,39 @@
         background-image: url("https://webcdn.infiniteflight.com/static/images/sections/homepage-section2-wing-8bit.png");
         min-height: 90%;
       }
+      .header {
+        display: flex;
+        align-items: center;
+      }
+
+      .cart-icon {
+        position: relative;
+        margin-left: 5px;
+        margin-top: 10px;
+      }
+
+      .item-count {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: #4caf50;
+        color: #fff;
+        font-size: 15px;
+        padding: 4px 6px;
+        border-radius: 50%;
+      }
+
+      .cart-icon img {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+      }
     </style>
   </head>
   <body>
-    <!-- Navbar (sit on top) -->
+    <!-- Navbar (sit on top) .  
+
+        -->
     <div class="w3-top w3-hide-small">
       <div
         class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off"
@@ -50,6 +79,17 @@
         <a href="EditWorker" class="w3-bar-item w3-button">Edit Worker</a>
         <a href="#myMap" class="w3-bar-item w3-button">CONTACT</a>
         <a href="logout" class="w3-bar-item w3-button">Log Out</a>
+        <a href="viewAllReports"   <div class="header">
+          <div class="cart-icon">
+            <span class="item-count">
+              {% csrf_token %} {% block context %} {{result}}
+              
+              {% endblock context %}
+            </span>
+            <img src="static/img/icons8-email-48.png" alt=" Icon" />
+          </div>
+        </a>
+        </div>
       </div>
     </div>
 
