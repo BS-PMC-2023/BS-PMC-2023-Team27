@@ -53,6 +53,16 @@
         >
         <a href="Table_Worker" class="w3-bar-item w3-button">view Worker</a>
         <a href="logout" class="w3-bar-item w3-button">Log Out</a>
+        <a href="viewAllReports"   <div class="header">
+          <div class="cart-icon">
+            <span class="item-count">
+              {% csrf_token %} {% block context %} {{result}}
+              
+              {% endblock context %}
+            </span>
+            <img src="static/img/icons8-email-48.png" alt=" Icon" />
+          </div>
+        </a>
       </div>
     </div>
 
