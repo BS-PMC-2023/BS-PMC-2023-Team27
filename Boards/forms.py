@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from models import Passenger, Worker, ContactUs, Workerreport
+from .models import Passenger, Worker, ContactUs, Workerreport
 
 
 class WorkerUserForm(forms.ModelForm):
