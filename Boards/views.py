@@ -1,4 +1,4 @@
-# from email.headerregistry import Group
+
 from django.contrib.auth.models import Group
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
@@ -24,24 +24,29 @@ from .models import Worker
 from django.shortcuts import get_object_or_404
 
 
-# Create your views here.
+
 
 
 def homePage(request):
-
-    # url = 'https://data.gov.il/api/3/action/datastore_search?resource_id=e83f763b-b7d7-479e-b172-ae981ddc6de5&limit=5&q=title:jones'
-    # response = urllib.urlopen(url)
-
-    # return render(request, 'index.html',{'response':response})
+    """
+    This function returns the rendered template 'index.html'.
+    """
     return render(request, 'index.html')
 
 
 def aboutus(request):
+    """
+    This function returns the rendered template 'aboutus.html'.
+    """
 
     return render(request, 'aboutus.html')
 
 
 def SignUp(request):
+    """
+    This function handles the sign-up process for passengers. It saves the user and passenger details
+    to the database and redirects to the 'homePage' view. It also performs form validation.
+    """
     passngeruserform = forms.PassengerUserForm()
     PassengerForm = forms.PassengerForm()
     mydict = {'PassengerForm': PassengerForm,
@@ -69,23 +74,13 @@ def SignUp(request):
     return render(request, 'SignUp.html', context=mydict)
 
 
-'''def LogIN(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_staff:
-                auth.login(request, user)
-                return redirect('Home')
-        return redirect('Home')
-    else:
-        messages.error(request, 'Invalid username or password')
-        return render(request, 'LogIn.html')'''
-
 
 def LogIN(request):
+    """
+    This function handles the login process for users. It authenticates the user and redirects to the
+    appropriate homepage based on the user's role (admin, worker, passenger). It also checks if the user
+    is already authenticated and redirects accordingly.
+    """
     print(request.user.is_authenticated)
     if request.user.is_authenticated == False:
         if request.method == "POST":
@@ -113,6 +108,10 @@ def LogIN(request):
 
 
 def worker_signup(request):
+    """
+    This function handles the sign-up process for workers. It saves the user and worker details
+    to the database and redirects to the 'HomePageadmin' view. It also performs form validation.
+    """
     userForm = forms.WorkerUserForm()
     workerForm = forms.WorkerForm()
     mydict = {'userForm': userForm, 'workerForm': workerForm}
@@ -133,33 +132,46 @@ def worker_signup(request):
 
 
 def logOut(request):
-    logout(request)
+    """
+    This function returns the rendered template 'logout.html'.
+    """
+    logOut(request)
 
 
 def HomePageadmin(request):
+    """
+    This function returns the rendered template 'HomePageadmin.html'.
+    """
     return render(request, 'HomePageadmin.html')
 
 
 def homePageWorker(request):
+    """
+    This function returns the rendered template 'homePageWorker.html'.
+    """
     return render(request, 'homePageWorker.html')
 
 
 def SignUpPage(request):
+    """
+    This function returns the rendered template 'SignUp.html'.
+    """
     return render(request, 'SignUp.html')
 
 
 def paypal(request):
+    """
+    This function returns the rendered template 'paypal.html'.
+    """
     return render(request, "paypal.html")
 
 
 def ContactUs(request):
-    # ContactusForm = forms.ContactUsForm()
-    # dect = {'Con': ContactusForm}
+    """
+    This function handles the contact form submission. It saves the contact details to the database and
+    redirects to the 'homePage' view. It also performs form validation.
+    """
     if request.method == 'POST':
-        # email = request.POST['email']
-        # subject = request.POST['subject']
-        # Discrbition = request.POST['Discrbition']
-
         CousForm = forms.ContactUsForm(request.POST)
         print(CousForm)
         print(CousForm.is_valid())
@@ -175,10 +187,17 @@ def ContactUs(request):
 
 
 def Contact(request):
+    """
+    This function returns the rendered template 'ContactUs.html'.
+    """
     return render(request, 'ContactUs.html')
 
 
 def workersReport(request):
+    """
+    This function handles the worker report submission. It saves the report details to the database and
+    redirects to the 'homePageWorker' view. It also performs form validation.
+    """
 
     if request.method == 'POST':
 
@@ -196,10 +215,12 @@ def workersReport(request):
         return render(request, 'workerreport.html')
 
 
-# my_customer_group = Group.objects.get_or_create(name='PASSENGER')
 
 
 def viewAllReports(request):
+    """
+    This function retrieves all worker reports from the database and renders them in the 'viewAllReports.html' template.
+    """
     context = {}
     if request.method == 'GET':
         result = models.workerreport.objects.all()
@@ -208,6 +229,9 @@ def viewAllReports(request):
 
 
 def EditWorker(request):
+    """
+    This function retrieves all workers from the database and renders them in the 'EditWorker.html' template.
+    """
 
     context = {}
     if request.method == 'GET':
@@ -217,6 +241,10 @@ def EditWorker(request):
 
 
 def EditWorkerusername(request, id):
+    """
+    This function handles the edit of a worker's username. It updates the worker's username in the database and
+    redirects to the 'EditWorker' view.
+    """
 
     print("id", id)
     if request.method == 'POST':
@@ -228,6 +256,10 @@ def EditWorkerusername(request, id):
 
 
 def EditWorkerIDuser(request, id):
+    """
+    This function handles the edit of a worker's ID user. It updates the worker's ID user in the database and
+    redirects to the 'EditWorker' view.
+    """
 
     if request.method == 'POST':
         worker = models.Worker.objects.get(user_id=id)
@@ -238,6 +270,10 @@ def EditWorkerIDuser(request, id):
 
 
 def EditWorkerEmail(request, id):
+    """
+    This function handles the edit of a worker's email. It updates the worker's email in the database and
+    redirects to the 'EditWorker' view.
+    """
 
     if request.method == 'POST':
         worker = models.Worker.objects.get(user_id=id)
@@ -248,6 +284,10 @@ def EditWorkerEmail(request, id):
 
 
 def EditWorkermobile(request, id):
+    """
+    This function handles the edit of a worker's mobile. It updates the worker's mobile in the database and
+    redirects to the 'EditWorker' view.
+    """
 
     if request.method == 'POST':
         worker = models.Worker.objects.get(user_id=id)
@@ -258,6 +298,9 @@ def EditWorkermobile(request, id):
 
 
 def vieworders(request):
+    """
+    This function retrieves all passenger orders from the database and renders them in the 'vieworders.html' template.
+    """
     context = {}
     if request.method == 'GET':
         result = models.Order.objects.all()
@@ -266,10 +309,16 @@ def vieworders(request):
 
 
 def menu(request):
+    """
+    This function returns the rendered template 'Menu.html'.
+    """
     return render(request, 'Menu.html')
 
 
 def getorder(request):
+    """
+    This function retrieves all passenger orders from the database and renders them in the 'Menu...html' template.
+    """
     items = []
     if request.method == 'POST':
         items = request.POST.getlist('item')
@@ -283,6 +332,7 @@ def getorder(request):
 
 
 def airline(request):
+    
     import json
 
     import requests
@@ -363,8 +413,6 @@ def airline(request):
         print(response.status_code)
         print(" ")
         data = response.json()
-        # data=response.text
-        # c=list(dict(dict(dict(response.json())['content'])['results'])['itineraries'])
         a = list(dict(dict(dict(dict(data)['content'])[
                  'results'])['itineraries']).keys())
         cirr = dict(dict(dict(dict(data)['content'])['results'])['carriers'])

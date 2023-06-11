@@ -89,16 +89,6 @@
 
             <ul class="navbar-list">
               <li>
-                <a href="homePage" class="navbar-link" data-nav-link
-                  >home Page</a
-                >
-              </li>
-
-              <li>
-                <a href="menu" class="navbar-link" data-nav-link>Menu</a>
-              </li>
-
-              <li>
                 <a href="aboutus" class="navbar-link" data-nav-link>about us</a>
               </li>
               <li>
@@ -111,16 +101,13 @@
                 >
               </li>
               <li>
-                <a href="paypal" class="navbar-link" data-nav-link>Payment</a>
-              </li>
-              <li>
                 <a href="logout" class="navbar-link" data-nav-link>Log out</a>
               </li>
             </ul>
           </nav>
 
-          <a href="{% url 'SearchFilght'   %}">
-            <button class="btn btn-primary">Book Now</button></a
+          <a href="{% url 'menu'   %}">
+            <button class="btn btn-primary">Shop Now</button></a
           >
         </div>
       </div>
@@ -141,6 +128,9 @@
             <div class="btn-group">
               <a href="{% url 'aboutus'  %}">
                 <button class="btn btn-primary">Learn more</button></a
+              >
+              <a href="{% url 'SearchFilght'  %}">
+                <button class="btn btn-primary">Book Now</button></a
               >
             </div>
           </div>
@@ -256,6 +246,7 @@
               </li>
             </ul>
           </div>
+
 
           <div class="footer-form">
             <form action="" class="form-wrapper"></form>
