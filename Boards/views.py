@@ -327,7 +327,7 @@ def getorder(request):
             a = Order.objects.create(name=items[i])
             a.save()
 
-        return redirect('HomePageadmin')
+        return redirect('home')
     return render(request, 'Menu.html')
 
 
